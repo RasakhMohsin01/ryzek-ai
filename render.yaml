@@ -1,0 +1,18 @@
+# Render.com blueprint - free plan friendly.
+# Deploy: push this folder to a GitHub repo, then "New + > Blueprint".
+services:
+  - type: web
+    name: ryzek-ai
+    runtime: python
+    plan: free
+    buildCommand: "echo no build step - pure Python"
+    startCommand: "python3 ryzek_ai.py --port $PORT"
+    healthCheckPath: /health
+    envVars:
+      - key: RYZEK_DATA
+        value: /var/data
+      - key: RYZEK_TRUST_PROXY
+        value: "1"
+      # change these before going public
+      - key: RYZEK_AUTHOR_PASSWORD
+        sync: false

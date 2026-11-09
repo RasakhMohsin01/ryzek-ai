@@ -1,0 +1,3 @@
+# Ryzek AI has no third-party dependencies - it runs on the Python standard
+# library alone (Python 3.9+). This file exists so hosts that insist on one
+# are happy; it stays empty on purpose.
