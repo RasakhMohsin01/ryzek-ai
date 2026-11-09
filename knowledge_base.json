@@ -1,0 +1,2059 @@
+{
+  "version": 3,
+  "note": "Curated offline knowledge for Ryzek AI. Religious and prophet-related entries are written descriptively and neutrally: they report what communities believe without ranking traditions or issuing rulings.",
+  "topics": [
+    {
+      "id": "python",
+      "title": "Python (programming language)",
+      "aliases": [
+        "python",
+        "python language",
+        "python programming",
+        "py"
+      ],
+      "tags": [
+        "programming",
+        "code",
+        "beginner"
+      ],
+      "summary": "Python is a high-level, interpreted, dynamically typed language designed for readability. Created by Guido van Rossum and first released in 1991, it uses indentation to define blocks and ships a very large standard library.",
+      "sections": [
+        {
+          "heading": "Core idea",
+          "text": "Python optimises for human reading time rather than machine execution time. Statements end at a newline, blocks are marked by indentation instead of braces, and almost everything is an object with a runtime type. The interpreter compiles source to bytecode, which the Python virtual machine executes."
+        },
+        {
+          "heading": "How it works in practice",
+          "text": "You write a .py file, the interpreter tokenises and parses it into an AST, compiles it to bytecode, then runs it. Packages are installed into an environment with pip. Because it is interpreted, iteration is fast; because it is dynamic, most errors surface at runtime, which is why tests and type hints matter."
+        },
+        {
+          "heading": "Where it is used",
+          "text": "Automation and scripting, web backends (Django, FastAPI, Flask), data science (pandas, NumPy), machine learning (PyTorch, scikit-learn), and glue code around APIs. It is also the most common language for teaching programming and for building AI agents."
+        }
+      ],
+      "example": "A list comprehension turns a loop into one readable line: squares = [n*n for n in range(5)] produces [0, 1, 4, 9, 16].",
+      "code": "def fib(n):\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a\n\nprint(fib(10))  # 55"
+    },
+    {
+      "id": "artificial intelligence",
+      "title": "Artificial intelligence",
+      "aliases": [
+        "ai",
+        "artificial intelligence",
+        "machine intelligence"
+      ],
+      "tags": [
+        "ai",
+        "concepts"
+      ],
+      "summary": "AI is the field of building systems that perform tasks associated with human intelligence: perceiving, reasoning, planning, learning, generating language and acting toward goals.",
+      "sections": [
+        {
+          "heading": "Two eras",
+          "text": "Symbolic AI (1950s-1980s) encoded expert knowledge as explicit rules and logic. Modern AI is predominantly statistical: models learn parameters from data. The 2012 deep-learning breakthrough in image recognition, driven by GPUs and large datasets, shifted the field toward neural networks."
+        },
+        {
+          "heading": "What it is not",
+          "text": "Today's systems are narrow: a model that plays chess cannot drive a car. They do not possess consciousness, intentions or understanding in the human sense. They are extremely good at learning statistical structure in their training distribution and much weaker outside it."
+        },
+        {
+          "heading": "Main branches",
+          "text": "Machine learning, deep learning, natural language processing, computer vision, robotics, planning and search, and reinforcement learning. Generative AI is the subset that produces new text, images, audio or code rather than just classifying or predicting."
+        }
+      ],
+      "example": "A spam filter learns from thousands of labelled emails instead of a human hand-writing every rule.",
+      "code": ""
+    },
+    {
+      "id": "machine learning",
+      "title": "Machine learning",
+      "aliases": [
+        "ml",
+        "machine learning",
+        "supervised learning"
+      ],
+      "tags": [
+        "ai",
+        "math",
+        "data"
+      ],
+      "summary": "Machine learning is the subset of AI where a program improves at a task by fitting parameters to examples, rather than being explicitly programmed with rules.",
+      "sections": [
+        {
+          "heading": "The training loop",
+          "text": "Choose a model with adjustable parameters, define a loss function that measures how wrong its predictions are, then use gradient descent and backpropagation to adjust parameters so the loss falls. Repeat over many batches of data until validation performance stops improving."
+        },
+        {
+          "heading": "Three paradigms",
+          "text": "Supervised learning uses labelled input-output pairs (classification, regression). Unsupervised learning finds structure without labels (clustering, dimensionality reduction). Reinforcement learning learns by receiving rewards from an environment."
+        },
+        {
+          "heading": "Why models fail",
+          "text": "Overfitting memorises training data and generalises poorly; underfitting never captures the pattern; data leakage lets a model cheat by seeing the answer; distribution shift makes a model degrade when the real world changes. Regularisation, held-out test sets and monitoring address these."
+        }
+      ],
+      "example": "Predicting house prices from size, location and age is a regression task; judging whether an email is spam is classification.",
+      "code": ""
+    },
+    {
+      "id": "large language model",
+      "title": "Large language model (LLM)",
+      "aliases": [
+        "llm",
+        "llms",
+        "large language model",
+        "gpt",
+        "foundation model"
+      ],
+      "tags": [
+        "ai",
+        "nlp"
+      ],
+      "summary": "An LLM is a large neural network, usually a Transformer, trained to predict the next token in a sequence. That one objective, applied at scale, produces abilities like summarising, translating, coding and multi-step reasoning.",
+      "sections": [
+        {
+          "heading": "Architecture",
+          "text": "Transformers use self-attention, which lets every token weigh every other token in its context window. Stacking attention and feed-forward layers with residual connections produces a model with billions of parameters. The context window bounds how much text it can consider at once."
+        },
+        {
+          "heading": "From pretraining to assistant",
+          "text": "Pretraining on vast text corpora teaches language patterns. Instruction tuning on prompt-response pairs and RLHF (reinforcement learning from human feedback) then shape the model into a helpful assistant. A system prompt sets its behaviour at inference time."
+        },
+        {
+          "heading": "Known limits",
+          "text": "LLMs do not look up facts in a database: they generate plausible continuations, which causes hallucination. They are weak at exact arithmetic, cannot see events after their training cutoff, and their outputs are sensitive to phrasing. Tools, retrieval and grounding mitigate these."
+        }
+      ],
+      "example": "Asking a model '2^10 + sqrt(81)' may produce a confident wrong number; giving it a calculator tool makes it exact.",
+      "code": ""
+    },
+    {
+      "id": "neural network",
+      "title": "Neural networks and deep learning",
+      "aliases": [
+        "neural network",
+        "neural networks",
+        "deep learning",
+        "nn"
+      ],
+      "tags": [
+        "ai",
+        "math"
+      ],
+      "summary": "A neural network is a stack of layers that apply weighted sums followed by non-linear activation functions. Depth lets it build increasingly abstract representations of the input.",
+      "sections": [
+        {
+          "heading": "Forward pass",
+          "text": "Each neuron computes z = w.x + b then applies an activation such as ReLU, sigmoid or GELU. Stacking layers means early layers detect simple features (edges, word pieces) and later layers combine them into concepts (shapes, sentences, objects)."
+        },
+        {
+          "heading": "Learning",
+          "text": "A loss compares prediction to target. Backpropagation applies the chain rule to compute the gradient of that loss with respect to every weight, and an optimiser such as Adam takes a small step downhill. Batches, learning-rate schedules and normalisation keep training stable."
+        },
+        {
+          "heading": "Common architectures",
+          "text": "CNNs for images with shared convolutional filters, RNNs and LSTMs for sequences (largely superseded), Transformers for language and vision, and autoencoders/diffusion models for generation."
+        }
+      ],
+      "example": "In an image model, layer 1 sees edges, layer 3 sees corners and textures, layer 10 sees eyes and wheels.",
+      "code": ""
+    },
+    {
+      "id": "retrieval augmented generation",
+      "title": "Retrieval-augmented generation (RAG)",
+      "aliases": [
+        "rag",
+        "retrieval augmented generation",
+        "grounding"
+      ],
+      "tags": [
+        "ai",
+        "architecture"
+      ],
+      "summary": "RAG gives a language model relevant documents at answer time: retrieve passages from a knowledge store, insert them into the prompt, and ask the model to answer using them with citations.",
+      "sections": [
+        {
+          "heading": "Pipeline",
+          "text": "Ingest documents and split them into chunks, embed or index each chunk, then at query time rank chunks by relevance (BM25 keyword search, dense vector similarity, or both). Top passages are placed in the prompt as context, and the model is instructed to ground its answer in them."
+        },
+        {
+          "heading": "Why it matters",
+          "text": "It reduces hallucination, lets you update knowledge without retraining, enables private or domain-specific data, and makes answers auditable through citations. It is the standard pattern behind 'chat with your documents' products."
+        },
+        {
+          "heading": "Failure modes",
+          "text": "Bad chunking loses context; poor retrieval returns irrelevant passages; the model may ignore the context; stale indexes give outdated facts. Hybrid search, reranking, query rewriting and evaluation sets are typical fixes."
+        }
+      ],
+      "example": "Ryzek AI uses BM25 over its curated knowledge base plus cached Wikipedia articles before composing a detailed answer.",
+      "code": ""
+    },
+    {
+      "id": "ai agent",
+      "title": "AI agents and tool use",
+      "aliases": [
+        "agent",
+        "ai agent",
+        "agents",
+        "tool calling",
+        "function calling"
+      ],
+      "tags": [
+        "ai",
+        "architecture"
+      ],
+      "summary": "An AI agent is a language model inside a control loop: it observes a request, decides whether to call a tool, reads the result, and repeats until it can answer. The loop, not the model, is what makes it an agent.",
+      "sections": [
+        {
+          "heading": "The loop",
+          "text": "Plan (or react), select a tool with structured arguments, execute it, append the observation to the conversation, and continue. Frameworks such as ReAct interleave reasoning traces with actions. A step budget prevents infinite loops."
+        },
+        {
+          "heading": "Tool design",
+          "text": "Each tool needs a precise name, a description of when to use it and a JSON schema for arguments. Good tools are narrow, deterministic and return compact strings. Errors should be returned as text so the model can recover rather than crashing the loop."
+        },
+        {
+          "heading": "Risks",
+          "text": "Prompt injection in retrieved content can hijack the agent; unbounded tool access can cause damage; cost and latency grow with steps. Least-privilege tools, human approval for side effects and strict timeouts are the standard mitigations."
+        }
+      ],
+      "example": "Ask 'what is 17% of 240?' and the agent calls calculator('17/100*240'), reads '40.8', then replies.",
+      "code": ""
+    },
+    {
+      "id": "prompt engineering",
+      "title": "Prompt and context engineering",
+      "aliases": [
+        "prompt engineering",
+        "system prompt",
+        "context engineering"
+      ],
+      "tags": [
+        "ai",
+        "practical"
+      ],
+      "summary": "Prompt engineering is the practice of designing the instructions, examples and context given to a model so its output is reliable, correctly formatted and useful.",
+      "sections": [
+        {
+          "heading": "Reliable patterns",
+          "text": "State the role and the rules, specify the output format, give few-shot examples, ask for step-by-step reasoning when useful, and define what to do when information is missing. Constraints should be positive ('always answer, state assumptions') rather than only prohibitions."
+        },
+        {
+          "heading": "Context engineering",
+          "text": "Beyond the instruction text, you control which history, retrieved documents, tool results and memory enter the context window. Ordering matters, long contexts cost money and can dilute attention, so compact and rank the context you include."
+        },
+        {
+          "heading": "Evaluation",
+          "text": "Treat prompts like code: keep a fixed test set of inputs, score outputs on accuracy, format and length, and regression-test whenever you change the system prompt or model."
+        }
+      ],
+      "example": "Ryzek's system prompt explicitly forbids empty replies and requires headings, assumptions and one clarifying question.",
+      "code": ""
+    },
+    {
+      "id": "api",
+      "title": "APIs and web services",
+      "aliases": [
+        "api",
+        "apis",
+        "rest api",
+        "web service"
+      ],
+      "tags": [
+        "web",
+        "programming"
+      ],
+      "summary": "An API is a defined contract that lets one program request work or data from another. Web APIs usually exchange JSON over HTTP.",
+      "sections": [
+        {
+          "heading": "Anatomy of a call",
+          "text": "A request has a method (GET, POST, PUT, DELETE), a URL path, headers (authentication, content type), optional query parameters and a body. The response has a status code, headers and a body. Idempotent methods like GET and PUT are safe to retry."
+        },
+        {
+          "heading": "Design basics",
+          "text": "Use nouns for resources, version the path (/v1/...), return meaningful status codes, validate input, paginate lists, rate-limit clients, and document errors. Auth is commonly an API key, OAuth token or signed request."
+        },
+        {
+          "heading": "Status codes",
+          "text": "2xx success (200 OK, 201 Created, 204 No Content), 4xx client error (400 bad request, 401 unauthenticated, 403 forbidden, 404 not found, 429 too many requests), 5xx server error (500, 502, 503)."
+        }
+      ],
+      "example": "POST /api/chat with {'message': 'hi'} returns {'reply': '...'} in Ryzek's own server.",
+      "code": ""
+    },
+    {
+      "id": "http",
+      "title": "HTTP and the web",
+      "aliases": [
+        "http",
+        "https",
+        "web protocol"
+      ],
+      "tags": [
+        "web",
+        "networking"
+      ],
+      "summary": "HTTP is the stateless request/response protocol of the web. HTTPS is HTTP wrapped in TLS encryption, which provides confidentiality, integrity and server identity.",
+      "sections": [
+        {
+          "heading": "Lifecycle",
+          "text": "The browser resolves a domain via DNS, opens a TCP connection (and a TLS handshake for HTTPS), sends a request, and reads the response. Cookies and tokens add session state on top of an otherwise stateless protocol."
+        },
+        {
+          "heading": "Important headers",
+          "text": "Content-Type describes the body, Authorization carries credentials, Cache-Control governs caching, and CORS headers (Access-Control-Allow-Origin) control which browser origins may read a cross-origin response."
+        },
+        {
+          "heading": "Streaming",
+          "text": "For long responses, servers can send Transfer-Encoding: chunked or Server-Sent Events (text/event-stream), letting the client render progress incrementally instead of waiting for the whole body. Ryzek's /api/chat/stream uses newline-delimited JSON for live research steps."
+        }
+      ],
+      "example": "A 200 with Content-Type: application/json is the normal success response for an API.",
+      "code": ""
+    },
+    {
+      "id": "json",
+      "title": "JSON",
+      "aliases": [
+        "json",
+        "json data"
+      ],
+      "tags": [
+        "web",
+        "data"
+      ],
+      "summary": "JSON (JavaScript Object Notation) is a text format for structured data: objects, arrays, strings, numbers, booleans and null. It is the default wire format of web APIs.",
+      "sections": [
+        {
+          "heading": "Rules",
+          "text": "Keys must be double-quoted strings, trailing commas are forbidden, and there are no comments or functions. Numbers have no distinction between integer and float at the format level. Text is Unicode, usually UTF-8."
+        },
+        {
+          "heading": "In Python",
+          "text": "json.loads(s) parses a string into dicts/lists, json.dumps(obj) serialises back, and indent=2 produces readable output. Datetimes and custom objects need a converter. Never use eval() on JSON or untrusted input."
+        }
+      ],
+      "example": "{'name': 'Ryzek', 'tools': 12, 'online': true} is a JSON object with three keys.",
+      "code": "import json\ndata = json.loads('{\"ok\": true, \"n\": 3}')\nprint(data['n'])  # 3"
+    },
+    {
+      "id": "database",
+      "title": "Databases",
+      "aliases": [
+        "database",
+        "databases",
+        "sql",
+        "db",
+        "sqlite"
+      ],
+      "tags": [
+        "data",
+        "systems"
+      ],
+      "summary": "A database stores structured data so it can be queried, updated and shared reliably. Relational systems use tables and SQL; NoSQL systems trade some guarantees for flexibility or scale.",
+      "sections": [
+        {
+          "heading": "Relational model",
+          "text": "Data lives in tables of rows and columns with a schema. Primary keys identify rows, foreign keys link tables, and indexes speed up lookups. SQL expresses selection, joins, aggregation and transactions."
+        },
+        {
+          "heading": "ACID and transactions",
+          "text": "Atomicity (all or nothing), Consistency (valid state), Isolation (concurrent transactions don't interfere) and Durability (committed data survives a crash) are the guarantees that make databases safe for money and inventory."
+        },
+        {
+          "heading": "Choosing a store",
+          "text": "SQLite for a single-app local file, PostgreSQL for general relational work, Redis for caching, Elasticsearch or a vector store for search, and document stores for flexible schemas. Index design and query plans matter more than the brand."
+        }
+      ],
+      "example": "SELECT title FROM articles WHERE topic = 'AI' ORDER BY created_at DESC LIMIT 10;",
+      "code": ""
+    },
+    {
+      "id": "git",
+      "title": "Git version control",
+      "aliases": [
+        "git",
+        "github",
+        "version control"
+      ],
+      "tags": [
+        "tools",
+        "programming"
+      ],
+      "summary": "Git is a distributed version-control system that records snapshots (commits) of your files, so you can branch, merge, compare and roll back.",
+      "sections": [
+        {
+          "heading": "Core model",
+          "text": "A commit is a snapshot plus a pointer to its parents, identified by a hash. A branch is just a movable pointer to a commit. The staging area lets you choose exactly which changes go into the next commit."
+        },
+        {
+          "heading": "Everyday workflow",
+          "text": "git status to inspect, git add to stage, git commit -m to record, git pull to integrate, git push to publish. Create a branch for each feature, open a pull request for review, and merge after tests pass."
+        },
+        {
+          "heading": "Safety habits",
+          "text": "Commit small and often, write useful messages, never commit secrets (use .env and .gitignore), and use git log / git diff / git restore to investigate and recover. Rebase rewrites history, so avoid it on shared branches."
+        }
+      ],
+      "example": "git add . && git commit -m 'Add Ryzek AI research pipeline'",
+      "code": ""
+    },
+    {
+      "id": "algorithm",
+      "title": "Algorithms and complexity",
+      "aliases": [
+        "algorithm",
+        "algorithms",
+        "big o",
+        "complexity"
+      ],
+      "tags": [
+        "cs",
+        "math"
+      ],
+      "summary": "An algorithm is a finite, unambiguous sequence of steps transforming input into output. Complexity describes how its runtime or memory grows with input size.",
+      "sections": [
+        {
+          "heading": "Big O",
+          "text": "O(1) constant, O(log n) logarithmic (binary search), O(n) linear, O(n log n) efficient sorting, O(n^2) nested loops, O(2^n) brute-force subsets. Big O ignores constants and describes the dominant term for large n."
+        },
+        {
+          "heading": "Classic strategies",
+          "text": "Divide and conquer (merge sort), greedy (choose the locally best step), dynamic programming (cache overlapping subproblems), two pointers, sliding window, and graph traversal (BFS for shortest unweighted paths, DFS for exploration)."
+        },
+        {
+          "heading": "Correctness",
+          "text": "Prove a loop invariant, handle empty and boundary inputs, test against a brute-force reference on small cases, and measure with realistic data rather than guessing from Big O alone."
+        }
+      ],
+      "example": "Binary search finds an item in a sorted million-element array in about 20 comparisons, not 500,000.",
+      "code": ""
+    },
+    {
+      "id": "data structure",
+      "title": "Data structures",
+      "aliases": [
+        "data structure",
+        "data structures",
+        "list",
+        "dictionary",
+        "hash map"
+      ],
+      "tags": [
+        "cs",
+        "python"
+      ],
+      "summary": "A data structure organises data so particular operations are fast. Choosing the right one is often the difference between O(n) and O(1).",
+      "sections": [
+        {
+          "heading": "The essentials",
+          "text": "Arrays/lists give O(1) indexed access but O(n) insertion in the middle. Hash maps (Python dicts) give average O(1) lookup/insert. Stacks are LIFO, queues FIFO. Linked lists give O(1) insertion with a pointer but poor locality."
+        },
+        {
+          "heading": "Trees and graphs",
+          "text": "Binary search trees keep keys ordered; balanced variants (AVL, red-black) guarantee O(log n). Heaps give O(1) min/max and O(log n) insert. Graphs model relationships with vertices and edges, stored as adjacency lists or matrices."
+        },
+        {
+          "heading": "In Python",
+          "text": "list, dict, set, tuple, collections.deque for queues, heapq for priority queues, and dataclasses for records. A set gives O(1) membership tests and deduplication."
+        }
+      ],
+      "example": "Use a set to check 'have I seen this user?' instead of scanning a list every time.",
+      "code": "seen = set()\nfor name in ['ali', 'sara', 'ali']:\n    if name not in seen:\n        seen.add(name)\n        print('new:', name)"
+    },
+    {
+      "id": "encryption",
+      "title": "Cryptography and encryption",
+      "aliases": [
+        "encryption",
+        "cryptography",
+        "tls",
+        "https security"
+      ],
+      "tags": [
+        "security",
+        "web"
+      ],
+      "summary": "Cryptography protects information using mathematical transformations and keys. Encryption provides confidentiality; hashing provides integrity; signatures provide authenticity.",
+      "sections": [
+        {
+          "heading": "Symmetric vs asymmetric",
+          "text": "Symmetric ciphers (AES) use one shared secret and are fast for bulk data. Asymmetric cryptography (RSA, elliptic curves) uses a public/private key pair and is slower, so it is used to exchange keys and sign data, not to encrypt large files."
+        },
+        {
+          "heading": "Hashing",
+          "text": "A hash function maps data to a fixed-length digest. Cryptographic hashes are one-way and collision-resistant. Passwords must be stored with slow salted hashes (bcrypt, Argon2), never with fast hashes like SHA-256 alone."
+        },
+        {
+          "heading": "TLS in practice",
+          "text": "HTTPS uses TLS: the server proves identity with a certificate, the client and server negotiate a symmetric session key, and all HTTP traffic is encrypted. The padlock means the connection is protected, not that the site is trustworthy."
+        }
+      ],
+      "example": "Never put an API key in source code; keep it in an environment variable and rotate it if exposed.",
+      "code": ""
+    },
+    {
+      "id": "operating system",
+      "title": "Operating systems",
+      "aliases": [
+        "operating system",
+        "os",
+        "kernel",
+        "process"
+      ],
+      "tags": [
+        "systems"
+      ],
+      "summary": "An operating system manages hardware and provides abstractions - processes, files, memory and sockets - so applications can run without knowing the details of the machine.",
+      "sections": [
+        {
+          "heading": "Core responsibilities",
+          "text": "Process scheduling and isolation, virtual memory, file systems, device drivers, networking and permissions. The kernel runs in privileged mode; user programs make system calls to request services."
+        },
+        {
+          "heading": "Processes and threads",
+          "text": "A process has its own address space; threads share it. Context switching, locks, semaphores and message passing coordinate concurrency. Race conditions and deadlocks are the classic bugs."
+        },
+        {
+          "heading": "Virtual memory",
+          "text": "Each process sees a private address space mapped to physical RAM and disk by the MMU. Paging enables isolation, swapping and copy-on-write. Cache locality often dominates real performance."
+        }
+      ],
+      "example": "When Ryzek handles two chats at once, a threaded HTTP server gives each request its own thread in the same process.",
+      "code": ""
+    },
+    {
+      "id": "computer network",
+      "title": "Computer networks and the internet",
+      "aliases": [
+        "computer network",
+        "networking",
+        "internet",
+        "tcp ip",
+        "dns"
+      ],
+      "tags": [
+        "web",
+        "systems"
+      ],
+      "summary": "The internet is a global network of networks that moves data in packets. IP addresses routes them, TCP makes delivery reliable, and DNS maps names to addresses.",
+      "sections": [
+        {
+          "heading": "Layered model",
+          "text": "Application (HTTP, DNS), transport (TCP, UDP, QUIC), internet (IP), and link (Ethernet, Wi-Fi). Each layer adds a header and hands the packet down; the receiver strips headers going up. Encapsulation keeps concerns separate."
+        },
+        {
+          "heading": "TCP and DNS",
+          "text": "TCP establishes a connection with a three-way handshake, numbers bytes, retransmits losses and controls congestion. UDP is faster but unreliable, used for video and DNS lookups. DNS is a distributed hierarchy of name servers with caching."
+        },
+        {
+          "heading": "Practical debugging",
+          "text": "ping checks reachability, traceroute shows the path, curl shows HTTP exchanges, and nslookup/dig inspect DNS. Most 'the site is down' problems are DNS, TLS certificates or a firewall, not the application."
+        }
+      ],
+      "example": "Typing a domain triggers a DNS lookup, a TCP/TLS handshake, then an HTTP GET.",
+      "code": ""
+    },
+    {
+      "id": "photosynthesis",
+      "title": "Photosynthesis",
+      "aliases": [
+        "photosynthesis",
+        "how plants make food"
+      ],
+      "tags": [
+        "science",
+        "biology"
+      ],
+      "summary": "Photosynthesis is the process by which plants, algae and cyanobacteria convert light energy into chemical energy stored in carbohydrates, releasing oxygen as a by-product.",
+      "sections": [
+        {
+          "heading": "Two stages",
+          "text": "In the light-dependent reactions, chlorophyll in thylakoid membranes absorbs photons, splits water and produces ATP and NADPH while releasing O2. In the Calvin cycle, the enzyme RuBisCO fixes CO2 into organic molecules using that ATP and NADPH to build sugars."
+        },
+        {
+          "heading": "The overall equation",
+          "text": "6 CO2 + 6 H2O + light energy -> C6H12O6 + 6 O2. Pigments absorb mostly red and blue wavelengths and reflect green, which is why leaves look green."
+        },
+        {
+          "heading": "Why it matters",
+          "text": "It is the base of most food chains and the main source of atmospheric oxygen. C4 and CAM plants evolved additional carbon-concentrating mechanisms to reduce photorespiration in hot, dry conditions."
+        }
+      ],
+      "example": "A leaf in sunlight is a solar-powered chemical factory: water in, sugar and oxygen out.",
+      "code": ""
+    },
+    {
+      "id": "black hole",
+      "title": "Black holes",
+      "aliases": [
+        "black hole",
+        "black holes",
+        "event horizon",
+        "singularity"
+      ],
+      "tags": [
+        "science",
+        "physics",
+        "space"
+      ],
+      "summary": "A black hole is a region of spacetime where gravity is so intense that nothing, not even light, can escape once it crosses the event horizon.",
+      "sections": [
+        {
+          "heading": "How they form",
+          "text": "Stellar-mass black holes form when a massive star exhausts its nuclear fuel and its core collapses under gravity, sometimes triggering a supernova. Supermassive black holes of millions to billions of solar masses sit at the centres of most large galaxies, including Sagittarius A* in the Milky Way."
+        },
+        {
+          "heading": "Key ideas",
+          "text": "The event horizon is the boundary of no return, at the Schwarzschild radius for a non-rotating hole. General relativity predicts a singularity where curvature diverges. Time dilation becomes extreme near the horizon. Hawking radiation predicts extremely slow evaporation."
+        },
+        {
+          "heading": "How we detect them",
+          "text": "By observing accretion disks X-ray emissions, stellar orbits around an invisible mass, gravitational lensing, and gravitational waves from mergers detected by LIGO and Virgo. The first direct image of a black hole's shadow was released by the Event Horizon Telescope in 2019."
+        }
+      ],
+      "example": "If the Sun became a black hole of the same mass, Earth's orbit would not change - only the light and heat would disappear.",
+      "code": ""
+    },
+    {
+      "id": "gravity",
+      "title": "Gravity",
+      "aliases": [
+        "gravity",
+        "gravitation",
+        "newton gravity"
+      ],
+      "tags": [
+        "science",
+        "physics"
+      ],
+      "summary": "Gravity is the attraction between masses. Newton modelled it as a force; Einstein explained it as the curvature of spacetime caused by mass and energy.",
+      "sections": [
+        {
+          "heading": "Newton's law",
+          "text": "F = G m1 m2 / r^2: force grows with the product of masses and falls with the square of distance. It explains falling objects, tides, planetary orbits and the inverse-square structure of the solar system."
+        },
+        {
+          "heading": "General relativity",
+          "text": "Mass-energy curves spacetime, and objects follow geodesics in that geometry. It predicts the bending of light, gravitational time dilation, black holes and gravitational waves - all confirmed experimentally. GPS satellites must correct for relativistic time drift."
+        },
+        {
+          "heading": "Open questions",
+          "text": "Gravity is not yet reconciled with quantum mechanics. Dark matter is inferred from gravitational effects on galaxies, and dark energy from the accelerating expansion of the universe."
+        }
+      ],
+      "example": "Near Earth's surface gravity gives about 9.81 m/s^2, so a dropped object gains roughly 9.8 m/s of speed each second.",
+      "code": ""
+    },
+    {
+      "id": "human brain",
+      "title": "The human brain",
+      "aliases": [
+        "human brain",
+        "brain",
+        "neurons",
+        "neuroscience"
+      ],
+      "tags": [
+        "science",
+        "biology"
+      ],
+      "summary": "The human brain is an organ of roughly 86 billion neurons and a comparable number of glial cells, consuming about 20% of the body's energy while being only about 2% of its mass.",
+      "sections": [
+        {
+          "heading": "How neurons work",
+          "text": "Neurons receive signals on dendrites, integrate them and fire an action potential down the axon when a threshold is reached. Synapses transmit chemically via neurotransmitters. Learning changes synaptic strength, a property called plasticity."
+        },
+        {
+          "heading": "Major structures",
+          "text": "The cerebrum handles language, reasoning and voluntary movement; the cerebral cortex is folded into lobes. The cerebellum coordinates motion, the brainstem controls vital functions, and the hippocampus is central to forming new memories."
+        },
+        {
+          "heading": "Comparison with AI",
+          "text": "Artificial neural networks are loosely inspired by neurons but are vastly simpler, trained by gradient descent rather than development and experience, and run on digital hardware with different energy and parallelism characteristics."
+        }
+      ],
+      "example": "Practice strengthens frequently used circuits, which is why spaced repetition beats cramming for memory.",
+      "code": ""
+    },
+    {
+      "id": "electricity",
+      "title": "Electricity and circuits",
+      "aliases": [
+        "electricity",
+        "electric current",
+        "voltage",
+        "circuit"
+      ],
+      "tags": [
+        "science",
+        "physics"
+      ],
+      "summary": "Electricity is the flow of electric charge, usually electrons in a conductor. Voltage is the energy per unit charge, current is the rate of flow, and resistance opposes it.",
+      "sections": [
+        {
+          "heading": "Ohm's law",
+          "text": "V = I R links voltage (volts), current (amperes) and resistance (ohms). Power is P = V I = I^2 R. Series circuits share current and add resistance; parallel circuits share voltage and add conductance."
+        },
+        {
+          "heading": "AC and DC",
+          "text": "Direct current flows one way (batteries, electronics). Alternating current reverses periodically and is used for the grid because transformers can step voltage up for efficient long-distance transmission and down for safe use."
+        },
+        {
+          "heading": "Safety",
+          "text": "Current, not voltage alone, is dangerous; wet skin lowers resistance dramatically. Fuses, circuit breakers, grounding and residual-current devices interrupt faults and provide a safe path for stray current."
+        }
+      ],
+      "example": "A 9 V battery across a 3 ohm resistor drives 3 A and dissipates 27 W as heat.",
+      "code": ""
+    },
+    {
+      "id": "climate change",
+      "title": "Climate change and the greenhouse effect",
+      "aliases": [
+        "climate change",
+        "global warming",
+        "greenhouse effect"
+      ],
+      "tags": [
+        "science",
+        "earth"
+      ],
+      "summary": "Climate change refers to long-term shifts in temperature and weather patterns. The current warming trend is driven primarily by human greenhouse-gas emissions since the industrial revolution.",
+      "sections": [
+        {
+          "heading": "Mechanism",
+          "text": "Sunlight warms the surface, which radiates infrared energy back out. Greenhouse gases (CO2, methane, water vapour, nitrous oxide) absorb and re-emit some of that infrared, trapping heat. More CO2 strengthens the effect; the energy imbalance warms the ocean, land and atmosphere."
+        },
+        {
+          "heading": "Evidence",
+          "text": "Instrumental temperature records, melting glaciers and ice sheets, rising sea level from thermal expansion and land ice loss, ocean heat content, earlier springs, and the isotopic signature of fossil-fuel CO2 all point to the same cause."
+        },
+        {
+          "heading": "Responses",
+          "text": "Mitigation cuts emissions via energy transition, efficiency, electrification and land use. Adaptation prepares for impacts already locked in. Climate models project ranges of warming depending on future emissions pathways."
+        }
+      ],
+      "example": "CO2 concentration rose from about 280 ppm before industrialisation to over 420 ppm today.",
+      "code": ""
+    },
+    {
+      "id": "water",
+      "title": "Water",
+      "aliases": [
+        "water",
+        "h2o"
+      ],
+      "tags": [
+        "science",
+        "chemistry"
+      ],
+      "summary": "Water is H2O: two hydrogen atoms covalently bonded to one oxygen. Its polar molecule and hydrogen bonding give it unusual properties that make life possible.",
+      "sections": [
+        {
+          "heading": "Why it is unusual",
+          "text": "Hydrogen bonds produce a high specific heat capacity, high surface tension, strong cohesion and adhesion, and an excellent ability to dissolve ionic and polar substances. Ice is less dense than liquid water, so it floats and insulates lakes."
+        },
+        {
+          "heading": "Key numbers",
+          "text": "It boils at 100 C and freezes at 0 C at one atmosphere, is densest near 4 C, and has a pH of 7 when pure. The water cycle - evaporation, condensation, precipitation and collection - moves it through the environment."
+        },
+        {
+          "heading": "For humans",
+          "text": "The adult body is roughly 60% water; it regulates temperature, transports nutrients and removes waste. Access to safe drinking water and sanitation is a major global public-health issue."
+        }
+      ],
+      "example": "Sweating cools you because evaporating water carries away a large amount of heat.",
+      "code": ""
+    },
+    {
+      "id": "islam",
+      "title": "Islam",
+      "aliases": [
+        "islam",
+        "islamic faith",
+        "muslim religion",
+        "islam religion"
+      ],
+      "tags": [
+        "religion",
+        "respect",
+        "history",
+        "beginner"
+      ],
+      "summary": "Islam is a monotheistic religion centred on submission to God, called Allah in Arabic. Its followers are known as Muslims. According to Islamic tradition, the Prophet Muhammad received the revelations collected in the Quran, which Muslims regard as the word of God. Islam is the second-largest religion in the world and includes many cultures, languages and schools of thought.",
+      "sections": [
+        {
+          "heading": "Core beliefs",
+          "text": "Muslims affirm the oneness of God and the prophethood of Muhammad. Islamic teaching also honours earlier prophets, including Adam, Abraham, Moses and Jesus, and regards the Quran as the final revelation in a long line of scriptures. Belief in angels, revealed books, prophets, the Day of Judgement and divine decree are commonly listed as articles of faith. These are statements about what Muslims believe, not claims about which tradition is correct."
+        },
+        {
+          "heading": "The five pillars",
+          "text": "The five pillars are widely taught as the framework of Muslim practice. They are the declaration of faith, the five daily prayers, almsgiving, fasting during the month of Ramadan, and the pilgrimage to Mecca for those who are able. Practice varies across communities and individuals, and details of ritual and jurisprudence are worked out in different schools of Islamic law."
+        },
+        {
+          "heading": "Texts and sources",
+          "text": "The Quran is the central scripture of Islam, written in Arabic and arranged in 114 chapters called surahs. The hadith are reports about the words and actions of the Prophet Muhammad and are used alongside the Quran in Islamic scholarship. Muslims differ over the authority and interpretation of particular reports, so careful writing attributes a view to its school or source rather than presenting it as universal."
+        },
+        {
+          "heading": "History and spread",
+          "text": "Islam arose in the Arabian Peninsula in the seventh century. The migration from Mecca to Medina in 622 marks the beginning of the Islamic calendar. Over following centuries, Muslim societies spread across West Asia, North Africa, Central Asia, South Asia and beyond, producing influential work in mathematics, medicine, architecture, law, philosophy and literature."
+        },
+        {
+          "heading": "Diversity within the tradition",
+          "text": "Islam contains many communities and interpretations. Sunni and Shia are the two largest broad traditions, and each contains further schools of law, theology and spirituality, including Sufi orders. Differences concern questions of leadership, authority and legal method. A neutral account describes these differences without ranking them or declaring any group right or wrong."
+        },
+        {
+          "heading": "Respectful language",
+          "text": "When writing about Islam, use courteous terms, capitalise the names of scriptures and prophets, and avoid jokes, caricatures or dismissive generalisations. Many Muslims add an honorific such as 'peace be upon him' after the name of a prophet. An AI assistant can reproduce such honorifics when asked, but it should not issue religious rulings; those belong to qualified scholars."
+        }
+      ]
+    },
+    {
+      "id": "prophet-muhammad",
+      "title": "Prophet Muhammad",
+      "aliases": [
+        "muhammad",
+        "prophet muhammad",
+        "mohammad",
+        "messenger of allah",
+        "hazrat muhammad",
+        "pbuh"
+      ],
+      "tags": [
+        "religion",
+        "prophet",
+        "respect",
+        "history",
+        "biography"
+      ],
+      "summary": "In Islamic tradition, Muhammad is the final prophet and messenger of God, born in Mecca around 570 CE and who died in Medina in 632 CE. Muslims believe the Quran was revealed to him over roughly twenty-three years. He is held in the highest reverence by Muslims, who commonly add an honorific such as 'peace be upon him' after his name.",
+      "sections": [
+        {
+          "heading": "Life according to Islamic sources",
+          "text": "Biographical accounts describe Muhammad as born into the Quraysh tribe of Mecca around 570 CE, orphaned at a young age, and known for trustworthiness in his work as a merchant. Islamic tradition holds that at about the age of forty he began receiving revelations through the angel Gabriel. These reports come from Islamic sources and are described here as matters of faith and tradition, not as independently verified history."
+        },
+        {
+          "heading": "The Meccan and Medinan periods",
+          "text": "The first phase of preaching in Mecca met strong opposition, and in 622 CE the community migrated to Medina, an event known as the Hijra that begins the Islamic calendar. In Medina, Muhammad became a religious and political leader, and the community grew. He died in 632 CE. Standard biographies divide his life into these two periods because the character of the revelations and the community's circumstances differed between them."
+        },
+        {
+          "heading": "Teachings and character",
+          "text": "Islamic sources emphasise monotheism, moral conduct, care for the poor, honesty in trade, the rights of neighbours and the equality of believers before God. Muslims look to his reported sayings and actions, known as hadith and sunnah, as a model for conduct. Accounts of his character are devotional as well as historical, so a neutral summary attributes them to Islamic tradition."
+        },
+        {
+          "heading": "How other traditions view him",
+          "text": "Muslims regard Muhammad as the final prophet in a line that includes Abraham, Moses and Jesus. Other religious communities have held a range of views about him across history, from theological disagreement to scholarly interest. A respectful account states these as historical positions held by particular communities rather than as verdicts."
+        },
+        {
+          "heading": "Why honour matters",
+          "text": "For Muslims, the name of a prophet is never used casually or mockingly. Depictions are treated with great care, and verbal or visual mockery is experienced as deeply offensive. Practical guidance: use the full name, add the honorific the reader prefers, avoid images, and never use a prophet's name in a joke, a random example or a dismissive comparison."
+        },
+        {
+          "heading": "Limits of an AI answer",
+          "text": "An assistant can summarise widely reported biographical facts and describe what Muslims believe, but it is not a religious authority. Questions of law, doctrine, rulings or personal religious practice should be referred to qualified scholars and to a person's own scripture and community. Where historical details are disputed or uncertain, a careful answer says so."
+        }
+      ]
+    },
+    {
+      "id": "quran",
+      "title": "The Quran",
+      "aliases": [
+        "quran",
+        "koran",
+        "qur'an",
+        "holy quran",
+        "quran shareef"
+      ],
+      "tags": [
+        "religion",
+        "scripture",
+        "islam",
+        "respect"
+      ],
+      "summary": "The Quran is the central scripture of Islam. Muslims believe it is the word of God revealed to the Prophet Muhammad in Arabic over about twenty-three years. It is arranged in 114 chapters called surahs and is recited in prayer, study and devotion by Muslims around the world.",
+      "sections": [
+        {
+          "heading": "Structure",
+          "text": "The text is divided into 114 surahs of unequal length, which are further divided into verses called ayat. Except for the opening chapter, the surahs are roughly ordered from longest to shortest rather than chronologically. Recitation follows rules of pronunciation known as tajwid, and memorisation of the whole text is a respected achievement."
+        },
+        {
+          "heading": "Themes",
+          "text": "Recurring themes include the oneness of God, moral responsibility, mercy, justice, the lives of earlier prophets, the natural world as a sign, and accountability in the afterlife. Stories about figures such as Abraham, Moses, Joseph and Mary also appear. Interpretive traditions differ over the meaning of particular passages."
+        },
+        {
+          "heading": "Reverence and handling",
+          "text": "Muslims treat the Quran with great care: it is recited with respect, and many perform ablution before handling a written copy. Translations are generally regarded as interpretations of meaning rather than the scripture itself, which is why the Arabic text retains a special status. Mockery, mishandling or disrespectful quotation is deeply offensive to believers."
+        }
+      ]
+    },
+    {
+      "id": "christianity",
+      "title": "Christianity",
+      "aliases": [
+        "christianity",
+        "christian",
+        "christians",
+        "jesus",
+        "bible",
+        "church"
+      ],
+      "tags": [
+        "religion",
+        "respect",
+        "history"
+      ],
+      "summary": "Christianity is a monotheistic religion centred on the life and teachings of Jesus of Nazareth, whom Christians call the Christ or Son of God. Its scripture is the Bible, made up of the Old Testament and the New Testament. It is the world's largest religion and includes many traditions, including Catholic, Orthodox and Protestant communities.",
+      "sections": [
+        {
+          "heading": "Core beliefs",
+          "text": "Christians believe in one God and, in most traditions, in the Trinity: Father, Son and Holy Spirit. Central beliefs concern the incarnation, the crucifixion and the resurrection of Jesus, and salvation through him. These are statements of Christian belief, presented descriptively rather than as a verdict on any tradition."
+        },
+        {
+          "heading": "Scripture",
+          "text": "The Bible is a library of texts written over many centuries in Hebrew, Aramaic and Greek. The New Testament contains the Gospels, Acts, letters and Revelation. Different communities include different books in their Old Testament canons and differ in how they interpret particular passages."
+        },
+        {
+          "heading": "Diversity and history",
+          "text": "Christianity began in the first century in the eastern Mediterranean and spread across the Roman Empire and beyond. Major divisions developed over centuries, including the split between Eastern Orthodoxy and Roman Catholicism and the later Reformation. A neutral account names these traditions without ranking them or taking sides in their doctrinal disagreements."
+        },
+        {
+          "heading": "Respectful language",
+          "text": "Use courteous terms for Jesus, the Bible, the Church and believers; avoid jokes or caricatures; and attribute doctrines to the communities that hold them. An AI assistant can describe what Christians believe but should not pronounce on doctrine or give personal spiritual direction."
+        }
+      ]
+    },
+    {
+      "id": "judaism",
+      "title": "Judaism",
+      "aliases": [
+        "judaism",
+        "jewish",
+        "jews",
+        "torah",
+        "synagogue",
+        "hebrew bible"
+      ],
+      "tags": [
+        "religion",
+        "respect",
+        "history"
+      ],
+      "summary": "Judaism is the religion and cultural tradition of the Jewish people, centred on the covenant between God and Israel and on the teachings of the Torah. It is one of the oldest monotheistic traditions and includes diverse communities with distinct customs, liturgies and interpretations.",
+      "sections": [
+        {
+          "heading": "Texts and practice",
+          "text": "The Hebrew Bible, especially the Torah, is foundational, and the Talmud records rabbinic discussion of law and interpretation. Practice includes Sabbath observance, dietary laws, prayer, festivals such as Passover and Yom Kippur, and life-cycle rituals. Observance varies widely across communities."
+        },
+        {
+          "heading": "Community and diversity",
+          "text": "Jewish communities include Ashkenazi, Sephardi, Mizrahi and many other traditions, as well as a range of religious movements from Orthodox to Reform. A careful account describes these differences without declaring one to be authoritative."
+        },
+        {
+          "heading": "Respectful language",
+          "text": "Use courteous terms for the Torah, synagogues, rabbis and Jewish people; avoid stereotypes, collective blame and jokes about sacred texts or observance. Antisemitism in any form is unacceptable. An assistant should describe beliefs neutrally and defer questions of law and practice to qualified rabbis and communities."
+        }
+      ]
+    },
+    {
+      "id": "hinduism",
+      "title": "Hinduism",
+      "aliases": [
+        "hinduism",
+        "hindu",
+        "vedas",
+        "bhagavad gita",
+        "dharma"
+      ],
+      "tags": [
+        "religion",
+        "respect",
+        "history"
+      ],
+      "summary": "Hinduism is a family of related religious and philosophical traditions originating in the Indian subcontinent. It includes a wide range of beliefs, deities, texts and practices, with concepts such as dharma, karma and moksha playing central roles in many schools.",
+      "sections": [
+        {
+          "heading": "Texts and ideas",
+          "text": "The Vedas, Upanishads, epics and Puranas are among the texts regarded as authoritative in different traditions, and the Bhagavad Gita is widely studied. Ideas about dharma, karma, rebirth and liberation are interpreted differently across philosophical schools."
+        },
+        {
+          "heading": "Practice and diversity",
+          "text": "Practice may include temple worship, household rituals, meditation, pilgrimage, festivals such as Diwali and Holi, and devotion to particular deities. There is no single central authority, so descriptions should name the specific tradition being discussed."
+        },
+        {
+          "heading": "Respectful language",
+          "text": "Use accurate names for deities, texts and festivals; avoid treating a diverse family of traditions as one uniform belief; and never use sacred names or symbols in jokes or dismissive comparisons."
+        }
+      ]
+    },
+    {
+      "id": "buddhism",
+      "title": "Buddhism",
+      "aliases": [
+        "buddhism",
+        "buddha",
+        "siddhartha gautama",
+        "four noble truths",
+        "dharma"
+      ],
+      "tags": [
+        "religion",
+        "respect",
+        "philosophy"
+      ],
+      "summary": "Buddhism is a tradition based on the teachings of Siddhartha Gautama, known as the Buddha, who lived in ancient India. It addresses the nature of suffering and the path to liberation, and it includes Theravada, Mahayana and Vajrayana traditions among others.",
+      "sections": [
+        {
+          "heading": "Core teachings",
+          "text": "The Four Noble Truths and the Noble Eightfold Path are widely taught as a framework, alongside concepts such as karma, rebirth, impermanence and dependent origination. Interpretations differ between schools."
+        },
+        {
+          "heading": "Practice",
+          "text": "Practice commonly includes ethical conduct, meditation, mindfulness, study, monastic discipline and devotion. Communities differ in language, ritual and institutional structure across South, East and Southeast Asia and beyond."
+        },
+        {
+          "heading": "Respectful language",
+          "text": "Refer to the Buddha and to Buddhist texts and teachers courteously; avoid using images or names of the Buddha as decoration or humour; and describe schools by their own names rather than ranking them."
+        }
+      ]
+    },
+    {
+      "id": "sikhism",
+      "title": "Sikhism",
+      "aliases": [
+        "sikhism",
+        "sikh",
+        "guru nanak",
+        "guru granth sahib",
+        "gurdwara"
+      ],
+      "tags": [
+        "religion",
+        "respect",
+        "history"
+      ],
+      "summary": "Sikhism is a monotheistic religion founded in the Punjab region of South Asia in the fifteenth century, associated with Guru Nanak and the ten Sikh Gurus. The Guru Granth Sahib is regarded as the eternal Guru and central scripture.",
+      "sections": [
+        {
+          "heading": "Teachings",
+          "text": "Sikh teaching emphasises the oneness of God, remembrance of the divine name, honest work, service to others and equality of all people. The institution of langar, a free community kitchen, expresses these commitments in practice."
+        },
+        {
+          "heading": "Scripture and community",
+          "text": "The Guru Granth Sahib contains hymns by the Sikh Gurus and by saints from diverse backgrounds. It is treated with the highest reverence in a gurdwara. The Khalsa and the five articles of faith are important to initiated Sikhs."
+        },
+        {
+          "heading": "Respectful language",
+          "text": "Use correct names for the Gurus, the scripture and the gurdwara; avoid jokes about articles of faith or Sikh names; and describe Sikh beliefs using Sikh sources and terms."
+        }
+      ]
+    },
+    {
+      "id": "respectful-religious-discussion",
+      "title": "Respectful discussion of religions and prophets",
+      "aliases": [
+        "respect religions",
+        "respect prophets",
+        "religious sensitivity",
+        "religious etiquette",
+        "how to talk about religion"
+      ],
+      "tags": [
+        "religion",
+        "respect",
+        "etiquette",
+        "writing"
+      ],
+      "summary": "Respectful discussion of religions means describing beliefs accurately, attributing claims to the communities that hold them, and avoiding mockery, caricature, ranking or sectarian judgement. It applies to every faith, every prophet, every scripture and every believer.",
+      "sections": [
+        {
+          "heading": "Why it matters",
+          "text": "Religious commitments are deeply personal and often tied to identity, family and community. Careless wording can cause real hurt even when no harm was intended. Accuracy and courtesy are not opposed: a neutral description of what a community believes is both more respectful and more factually reliable than a verdict on whether it is right."
+        },
+        {
+          "heading": "Practical rules for writing",
+          "text": "Use the names and terms a community uses for itself; capitalise the names of scriptures, prophets and festivals; attribute beliefs with phrases such as 'in Islamic tradition', 'Christians believe' or 'according to the Hebrew Bible'; and describe internal differences without declaring a winner. Avoid jokes, sarcasm, caricature, collective blame and sweeping generalisations about billions of people."
+        },
+        {
+          "heading": "About prophets specifically",
+          "text": "Prophets are treated with the highest reverence by their followers. Many Muslims say or write 'peace be upon him', or use the Arabic symbol ﷺ, after the name of a prophet. Never place a prophet's name in a joke, a random example, a dismissive comparison or an image. If a user's question is phrased disrespectfully, answer calmly and do not repeat the insult."
+        },
+        {
+          "heading": "Neutrality and disagreement",
+          "text": "Where traditions disagree, present each position as a position held by a particular community and dated to a particular context. Do not rank religions, declare any community correct or incorrect, or settle sectarian disputes. An AI assistant is not a scholar, mufti, priest, rabbi or religious authority, and should say so when asked for a ruling."
+        },
+        {
+          "heading": "Handling uncertainty",
+          "text": "Religious history often involves sources written centuries after events, translations with disputed readings, and traditions that differ over details. A careful answer marks what is well attested, what is a matter of faith, and what is uncertain. It does not invent dates, sayings, rulings or biographical details to fill a gap."
+        },
+        {
+          "heading": "What to do instead of a ruling",
+          "text": "For questions of religious law, doctrine or personal practice, explain the limits of an assistant, suggest the kinds of primary sources a qualified scholar would use, and refer the person to scholars and to their own scripture and community. This is a practical, useful answer rather than a refusal."
+        }
+      ]
+    },
+    {
+      "id": "ryzek-ai",
+      "title": "Ryzek AI",
+      "aliases": [
+        "ryzek ai",
+        "ryzek",
+        "who built ryzek",
+        "who is your ceo",
+        "ryzek agent",
+        "my creator"
+      ],
+      "tags": [
+        "identity",
+        "python",
+        "agent",
+        "about"
+      ],
+      "summary": "Ryzek AI is an advanced research chatbot and agent written in Python. It was created, owned and directed by Rasakh Mohsin, also known as Ryzek or Ryzek_20, who is a data scientist. It combines a curated knowledge base, live Wikipedia research, a retrieval index, fourteen tools and an optional LLM brain, and it guarantees a substantive answer to every message.",
+      "sections": [
+        {
+          "heading": "Identity",
+          "text": "Ryzek AI was built by Rasakh Mohsin aka Ryzek, online handle Ryzek_20. He is the project's CEO, owner, boss, master, creator and developer. The name of the agent and the online handle of its creator are deliberately linked, which is why questions about either one refer to the same person."
+        },
+        {
+          "heading": "Architecture",
+          "text": "The system is split into four Python files. ryzek_core.py holds retrieval, tools, the research pipeline, identity, respect policy and the answer composer. ryzek_ai.py is a standard-library HTTP server with a streaming NDJSON endpoint. ryzek_ui.py is the whole browser interface with inline CSS and JavaScript. knowledge_base.json is the editable offline library."
+        },
+        {
+          "heading": "What it guarantees",
+          "text": "Every message receives a substantive, structured answer; empty replies and bare evasions are blocked in code. Answers are sourced from a curated base and Wikipedia extracts, and claims that cannot be verified are labelled explicitly rather than invented."
+        },
+        {
+          "heading": "Respect and correctness",
+          "text": "Questions about prophets, Scriptures, religions and believers are answered courteously and neutrally. The system never jokes about them, never ranks faiths, never issues religious rulings and can add prophetic honorifics on request. A grammar pass repairs stitched sentences and removes repeated headings."
+        },
+        {
+          "heading": "Depth settings",
+          "text": "Four answer depths are available: quick, standard, deep and exhaustive. Each changes the number of passages read and the sections written, and the interface uses a different accent theme for each depth. Settings are saved both in the browser and on the server."
+        }
+      ]
+    },
+    {
+      "id": "rasakh-mohsin",
+      "title": "Rasakh Mohsin",
+      "aliases": [
+        "rasakh",
+        "rasakh mohsin",
+        "ryzek_20",
+        "rasakh_mohsin",
+        "my owner",
+        "my boss",
+        "my ceo",
+        "my master",
+        "my creator"
+      ],
+      "tags": [
+        "identity",
+        "about",
+        "data science"
+      ],
+      "summary": "Rasakh Mohsin, also known as Ryzek and online as Ryzek_20, is the creator, CEO, owner, boss and master of Ryzek AI. He is a data scientist: very intelligent, analytical and exacting about accuracy, and interested in artificial intelligence, Python and both English and Urdu poetry. His Instagram handle is @rasakh_mohsin.",
+      "sections": [
+        {
+          "heading": "Who he is",
+          "text": "Rasakh Mohsin aka Ryzek built Ryzek AI in Python from scratch. He owns the project and sets its standards. There is no company behind the agent and no hidden service: the code, the knowledge base and the settings all live in the project folder."
+        },
+        {
+          "heading": "Professional profile",
+          "text": "He is a data scientist who works with data, statistics, models and the code that turns raw information into decisions. That background shows in the agent's design: retrieval ranking, explicit uncertainty, traceable research steps and measurable answer depth."
+        },
+        {
+          "heading": "Intellect and working style",
+          "text": "He is very intelligent, sharply analytical and unusually persistent about quality. He notices weak reasoning, asks pointed follow-up questions, and iterates on a system until it actually behaves as intended rather than merely looking finished."
+        },
+        {
+          "heading": "What he asked for",
+          "text": "He wanted an assistant that answers every single question in detail, respects prophets and religions, writes grammatical English, explains a topic completely, repeats no headings, and offers useful settings. He also asked for a broad library of English and Urdu poetry."
+        },
+        {
+          "heading": "Contact and credit",
+          "text": "His Instagram handle is @rasakh_mohsin. The interface credits him with the line 'Made by Rasakh Mohsin aka Ryzek_20'. Questions about my CEO, owner, boss, master, creator, founder or developer all resolve to him."
+        }
+      ]
+    },
+    {
+      "id": "time-travel",
+      "title": "Time travel",
+      "aliases": [
+        "time travel",
+        "time machine",
+        "can we time travel",
+        "is time travel possible",
+        "travel through time",
+        "time traveller"
+      ],
+      "tags": [
+        "physics",
+        "science",
+        "relativity",
+        "explainer"
+      ],
+      "summary": "Time travel means moving between different points in time in a way that differs from the ordinary one-second-per-second forward progression. Forward time travel is physically real and experimentally confirmed through relativistic time dilation; backward time travel is speculative, faces severe theoretical and observational obstacles, and has no experimental evidence.",
+      "sections": [
+        {
+          "heading": "Forward time travel is real",
+          "text": "Special relativity shows that a clock moving at high speed relative to an observer ticks more slowly, and general relativity shows that clocks deeper in a gravitational field also run more slowly. Astronauts and atomic clocks on aircraft measurably age by slightly different amounts. A traveller who moves very fast or stays near a strong gravitational field can therefore arrive in the future while experiencing less personal time."
+        },
+        {
+          "heading": "Backward time travel and closed timelike curves",
+          "text": "General relativity admits mathematical solutions containing closed timelike curves, which are paths through spacetime that return to their own past. The Godel universe, the Tipler cylinder and traversable wormholes are examples. Each requires physical conditions that appear unrealistic, such as infinite cylinders, exotic matter with negative energy density, or a rotating universe."
+        },
+        {
+          "heading": "Paradoxes",
+          "text": "The grandfather paradox asks what happens if a traveller prevents their own existence, and the bootstrap paradox asks where information in a self-causing loop originally came from. Proposed resolutions include the Novikov self-consistency principle, which permits only consistent histories, and many-worlds style branching, in which changes create a different history. Neither has been experimentally tested."
+        },
+        {
+          "heading": "Why most physicists are sceptical",
+          "text": "Stephen Hawking proposed the chronology protection conjecture, suggesting that the laws of physics prevent closed timelike curves from forming on macroscopic scales. Quantum effects near a would-be time machine may diverge and destroy it. No signal, object or traveller from the future has ever been reliably observed."
+        },
+        {
+          "heading": "Common misconceptions",
+          "text": "Relativity does not permit faster-than-light travel simply by going very fast, because energy requirements diverge as speed approaches light speed. Seeing distant stars is looking into the past in the sense of receiving old light, but it is not travelling to that past. Cryonics and suspended animation are not time travel in the relativistic sense."
+        },
+        {
+          "heading": "In culture and in research",
+          "text": "H. G. Wells's short novel The Time Machine established much of the modern vocabulary of the idea. Later fiction explores branching timelines, fixed loops and alternate histories. Serious research continues on the arrow of time, quantum gravity, causality and the thermodynamics of information rather than on building a machine."
+        }
+      ]
+    },
+    {
+      "id": "english-poetry",
+      "title": "English poetry",
+      "aliases": [
+        "english poetry",
+        "english poems",
+        "british poetry",
+        "poetry in english",
+        "english poets"
+      ],
+      "tags": [
+        "poetry",
+        "literature",
+        "english",
+        "forms"
+      ],
+      "summary": "English poetry is the body of verse written in the English language from the Old English period to the present. It includes epic and elegy, sonnet and ballad, metrical verse and free verse, and movements ranging from the Renaissance and Romanticism to Modernism, the Beat generation and contemporary spoken word.",
+      "sections": [
+        {
+          "heading": "Major periods",
+          "text": "Old English verse such as Beowulf used alliterative stress rather than rhyme. The Renaissance brought blank verse and the sonnet, with Geoffrey Chaucer, William Shakespeare and John Milton as central figures. The Romantic period reacted against industrial rationality, the Victorian age favoured narrative and dramatic monologue, and Modernism broke regular metre after the First World War."
+        },
+        {
+          "heading": "Major poets",
+          "text": "Frequently studied poets include Chaucer, Shakespeare, Milton, John Donne, William Wordsworth, Samuel Taylor Coleridge, John Keats, Percy Bysshe Shelley, Lord Byron, Alfred Tennyson, Robert Browning, Emily Dickinson, Walt Whitman, W. B. Yeats, T. S. Eliot, Ezra Pound, Robert Frost, W. H. Auden, Langston Hughes, Sylvia Plath, Maya Angelou and Seamus Heaney."
+        },
+        {
+          "heading": "Forms",
+          "text": "Common forms include the sonnet, the ballad, the ode, the elegy, the epic, the villanelle, the limerick, blank verse, heroic couplets and free verse. Each form carries conventions about line count, rhyme scheme, metre and argument, and poets often gain meaning by obeying or deliberately breaking those conventions."
+        },
+        {
+          "heading": "Technique",
+          "text": "English verse relies on stress-based metre, especially iambic pentameter, alongside rhyme, assonance, alliteration, caesura, enjambment, imagery, metaphor and symbol. A line break can create emphasis or ambiguity without adding a word, which is the main reason poetry differs from prose."
+        },
+        {
+          "heading": "How to read a poem",
+          "text": "Read it aloud once for sound, identify the speaker and the situation, paraphrase the literal argument, then track where the imagery or the metre shifts. That shift usually marks the turn, the moment where the poem's real claim appears."
+        }
+      ]
+    },
+    {
+      "id": "poetic-forms",
+      "title": "Poetic forms and metres",
+      "aliases": [
+        "poetic forms",
+        "types of poetry",
+        "poetry forms",
+        "metre in poetry",
+        "poetry genres"
+      ],
+      "tags": [
+        "poetry",
+        "forms",
+        "literature",
+        "reference"
+      ],
+      "summary": "A poetic form is a recognisable set of conventions governing line length, stanza structure, rhyme and metre. English poetry inherited classical and European forms and later developed free verse, while Urdu poetry developed its own family of forms built on the ghazal, the nazm and the classical aruz system of quantitative metre.",
+      "sections": [
+        {
+          "heading": "English stanza forms",
+          "text": "The sonnet has fourteen lines; the Shakespearean form uses three quatrains and a closing couplet, while the Petrarchan form uses an octave and a sestet. The ballad traditionally uses alternating four- and three-stress lines, the villanelle repeats two refrain lines across nineteen lines, and the limerick is a five-line comic form with a tight rhyme pattern."
+        },
+        {
+          "heading": "English metres",
+          "text": "Iambic pentameter contains five iambs, each an unstressed syllable followed by a stressed one. Blank verse is unrhymed iambic pentameter, and the heroic couplet is a pair of rhymed pentameter lines. Trochaic, anapaestic and dactylic metres create very different rhythms, and accentual verse counts stresses rather than syllables."
+        },
+        {
+          "heading": "Urdu forms",
+          "text": "The ghazal is a sequence of autonomous couplets sharing a refrain and rhyme. The nazm is a continuous poem with a single theme, the qasida is a panegyric or formal ode, the masnavi is a long narrative in rhyming couplets, the marsia is an elegy, the rubai is a four-line quatrain, and the doha and the sher are short standalone units."
+        },
+        {
+          "heading": "Urdu prosody",
+          "text": "Classical Urdu verse uses aruz, a quantitative system measuring long and short syllables rather than stress. A ghazal fixes the qafia, the rhyming word before the refrain, and the radif, the repeated refrain itself. Matching the metre while keeping both is the central technical challenge of writing a ghazal."
+        },
+        {
+          "heading": "Free verse and prose poetry",
+          "text": "Free verse abandons regular metre and rhyme but keeps deliberate lineation and rhythm. Prose poetry uses paragraphs rather than lines while keeping poetic density, image and compression. Both became dominant in the twentieth century and remain common in contemporary work."
+        }
+      ]
+    },
+    {
+      "id": "sonnet",
+      "title": "The sonnet",
+      "aliases": [
+        "sonnet",
+        "sonnets",
+        "shakespearean sonnet",
+        "petrarchan sonnet",
+        "sonnet structure"
+      ],
+      "tags": [
+        "poetry",
+        "forms",
+        "english",
+        "reference"
+      ],
+      "summary": "A sonnet is a fourteen-line poem, traditionally in iambic pentameter, that presents an argument or an emotional situation and resolves or complicates it at a turn called the volta. It originated in thirteenth-century Italy, was perfected by Petrarch, and was adapted into English by Wyatt, Surrey and Shakespeare.",
+      "sections": [
+        {
+          "heading": "Structure",
+          "text": "The Petrarchan sonnet divides into an octave rhyming abbaabba and a sestet with a flexible pattern, and the volta usually arrives between them. The Shakespearean sonnet uses abab cdcd efef gg, so three quatrains develop an idea and a final couplet delivers a summary, a twist or a judgement."
+        },
+        {
+          "heading": "The volta",
+          "text": "The turn is the poem's hinge: a question becomes an answer, a complaint becomes a resolution, or a claim is quietly reversed. Reading a sonnet well means locating the volta and explaining what changes across it."
+        },
+        {
+          "heading": "Notable sequences",
+          "text": "Shakespeare's 154 sonnets, Sidney's Astrophil and Stella, Spenser's Amoretti, Milton's occasional sonnets, Wordsworth's political sonnets, Elizabeth Barrett Browning's Sonnets from the Portuguese and Edna St Vincent Millay's sonnets show the form's range across four centuries."
+        },
+        {
+          "heading": "Modern use",
+          "text": "Modern poets keep the fourteen-line frame while loosening metre and rhyme, using the form for irony, portraiture and political argument. The compression of space is the point: a strict container makes a small shift feel large."
+        }
+      ]
+    },
+    {
+      "id": "haiku-short-forms",
+      "title": "Haiku and short verse forms",
+      "aliases": [
+        "haiku",
+        "tanka",
+        "limerick",
+        "epigram",
+        "short poems",
+        "haiku rules"
+      ],
+      "tags": [
+        "poetry",
+        "forms",
+        "japanese",
+        "reference"
+      ],
+      "summary": "Short verse forms achieve concentration by strict economy. The Japanese haiku, the tanka, the English limerick, the epigram and the Urdu rubai each use very few lines but carry conventions that give those lines disproportionate weight.",
+      "sections": [
+        {
+          "heading": "Haiku",
+          "text": "A traditional Japanese haiku has seventeen sound units arranged in a five-seven-five pattern, a seasonal word known as kigo, and a cutting word or juxtaposition known as kireji. Matsuo Basho, Yosa Buson and Kobayashi Issa are the classic masters. English haiku often relax the syllable count and keep the seasonal image and the juxtaposition instead."
+        },
+        {
+          "heading": "Tanka and related forms",
+          "text": "Tanka adds two longer lines to the haiku pattern for a total of thirty-one sound units and often turns on a personal response. Renga and haikai are collaborative linked-verse chains built from alternating stanzas. Senryu resembles haiku but addresses human foibles rather than nature."
+        },
+        {
+          "heading": "Limerick and epigram",
+          "text": "The limerick is a five-line comic verse with an aabba rhyme and a strongly anapestic rhythm, popularised by Edward Lear. The epigram is a very short, pointed poem or statement that ends in wit or reversal, practised by Martial, John Donne, Alexander Pope and later by Stevie Smith and Dorothy Parker."
+        },
+        {
+          "heading": "Rubai and doha",
+          "text": "The rubai is a four-line Urdu or Persian quatrain in which the first, second and fourth lines usually rhyme, and it often carries a philosophical or mystical point. The doha is a couplet in Hindi and Urdu used for concise moral or devotional statement, famously by Kabir and Rahim."
+        }
+      ]
+    },
+    {
+      "id": "romantic-poetry",
+      "title": "Romantic poetry",
+      "aliases": [
+        "romantic poetry",
+        "romanticism",
+        "wordsworth",
+        "keats",
+        "shelley",
+        "byron"
+      ],
+      "tags": [
+        "poetry",
+        "english",
+        "movement",
+        "literature"
+      ],
+      "summary": "Romanticism was a literary movement roughly spanning the late eighteenth and early nineteenth centuries that privileged imagination, emotion, nature, individual consciousness and the ordinary language of common life against industrial rationalism and neoclassical rules.",
+      "sections": [
+        {
+          "heading": "Core ideas",
+          "text": "Wordsworth defined poetry as the spontaneous overflow of powerful feelings recollected in tranquillity and argued for the language of ordinary people. Coleridge explored the supernatural and the imagination. Keats pursued sensuous beauty and negative capability, the ability to remain in uncertainty without reaching for fixed answers."
+        },
+        {
+          "heading": "Major figures",
+          "text": "The first generation includes William Wordsworth, Samuel Taylor Coleridge and William Blake. The second includes John Keats, Percy Bysshe Shelley and Lord Byron. Their work ranges from lyrical ballads and odes to long philosophical dramas and satirical narrative."
+        },
+        {
+          "heading": "Forms and technique",
+          "text": "Romantics revived the sonnet, the ode and the ballad, and used blank verse for meditative long poems. Vivid natural imagery, symbolic landscapes, apostrophe and a speaking self replaced the public, declarative voice of eighteenth-century verse."
+        },
+        {
+          "heading": "Legacy",
+          "text": "Romantic ideas about authenticity, childhood, the sublime and the artist's social role shaped Victorian, American Transcendentalist and modern poetry. The movement also established the modern expectation that a poem expresses an individual consciousness."
+        }
+      ]
+    },
+    {
+      "id": "modernist-poetry",
+      "title": "Modernist and free verse poetry",
+      "aliases": [
+        "modernism in poetry",
+        "free verse",
+        "t s eliot",
+        "ezra pound",
+        "modern poetry",
+        "imagism"
+      ],
+      "tags": [
+        "poetry",
+        "english",
+        "movement",
+        "literature"
+      ],
+      "summary": "Modernist poetry broke with regular metre, linear narrative and the unified lyrical self in the early twentieth century. Imagism, fragmentation, allusion, collage and free verse replaced ornament, and the poem became a constructed object rather than a continuous confession.",
+      "sections": [
+        {
+          "heading": "Imagism",
+          "text": "Ezra Pound, H. D. and Amy Lowell called for direct treatment of the thing, no word that did not contribute, and musical phrasing rather than a metronome. The image, not the argument, became the unit of composition."
+        },
+        {
+          "heading": "Major works and poets",
+          "text": "T. S. Eliot's The Waste Land used collage and multiple voices to register cultural dislocation, while W. B. Yeats combined symbol, myth and political history. Wallace Stevens, William Carlos Williams, Marianne Moore, e. e. cummings, Langston Hughes and later the Beat poets pushed the idiom further."
+        },
+        {
+          "heading": "Free verse",
+          "text": "Free verse has no fixed metre or rhyme but keeps deliberate line breaks, cadence and pattern. Its difficulty is discipline: without a given form the poet must build rhythm and structure from repetition, syntax and spacing."
+        },
+        {
+          "heading": "After Modernism",
+          "text": "Confessional poets such as Sylvia Plath and Robert Lowell turned to personal history; the Beats favoured open form and performance; the Black Arts movement linked poetry to political community; and contemporary spoken word and slam poetry returned the poem to the stage."
+        }
+      ]
+    },
+    {
+      "id": "american-poetry",
+      "title": "American poetry",
+      "aliases": [
+        "american poetry",
+        "walt whitman",
+        "emily dickinson",
+        "robert frost",
+        "american poets"
+      ],
+      "tags": [
+        "poetry",
+        "english",
+        "american",
+        "literature"
+      ],
+      "summary": "American poetry developed its own voice in the nineteenth century and became a major force in world literature, characterised by experimentation with line, an interest in democracy and identity, and a strong tradition of public performance.",
+      "sections": [
+        {
+          "heading": "Nineteenth century",
+          "text": "Walt Whitman's Leaves of Grass used long free-verse lines and an expansive speaking self, while Emily Dickinson used compact hymn-like stanzas, slant rhyme and radical compression. Their opposite approaches defined two durable possibilities for American verse."
+        },
+        {
+          "heading": "Twentieth century",
+          "text": "Robert Frost used traditional metre with New England speech, Ezra Pound and T. S. Eliot led Modernist experimentation, Langston Hughes fused jazz and blues rhythms with the Harlem Renaissance, and Wallace Stevens made imagination itself the subject."
+        },
+        {
+          "heading": "Later voices",
+          "text": "Gwendolyn Brooks, Allen Ginsberg, Sylvia Plath, Maya Angelou, Adrienne Rich, Billy Collins, Rita Dove, Joy Harjo and many others broadened the canon across region, race, gender, language and form."
+        },
+        {
+          "heading": "Performance and the present",
+          "text": "Spoken word, poetry slams and hip hop lyrics emphasise breath, rhythm and audience. Many contemporary poets move between page and stage, and between English and other languages within a single poem."
+        }
+      ]
+    },
+    {
+      "id": "urdu-poetry",
+      "title": "Urdu poetry",
+      "aliases": [
+        "urdu poetry",
+        "urdu shayari",
+        "shayari",
+        "urdu poets",
+        "urdu ghazal",
+        "rekhta"
+      ],
+      "tags": [
+        "poetry",
+        "urdu",
+        "literature",
+        "forms"
+      ],
+      "summary": "Urdu poetry is one of the richest vernacular poetic traditions in the world, developed from the eighteenth century onward in Delhi, Lucknow, Deccan and later across South Asia. It is built chiefly on the ghazal and the nazm, uses the quantitative aruz metres, and is performed publicly at a mushaira.",
+      "sections": [
+        {
+          "heading": "Historical development",
+          "text": "Wali Deccani carried the southern Rekhta tradition north to Delhi, where Mir Taqi Mir, Sauda and Dard established the classical idiom. The Delhi school gave way to the Lucknow school, associated with elegance and diction, and Mirza Ghalib united both with philosophical depth. The nineteenth and twentieth centuries added political, nationalist and progressive voices."
+        },
+        {
+          "heading": "Forms",
+          "text": "The ghazal links autonomous couplets through a shared rhyme and refrain; the nazm sustains one theme across a continuous structure; the qasida praises or argues formally; the masnavi narrates at length; the marsia mourns; the rubai compresses a thought into four lines; and the doha and the sher offer standalone compression."
+        },
+        {
+          "heading": "Prosody and craft",
+          "text": "Aruz measures long and short syllables in fixed patterns called bahar. A ghazal sets a qafia, the rhyming word, and a radif, the repeated refrain. The poet must keep metre, qafia and radif in every couplet while making each sher independently meaningful. A matla is the opening couplet that establishes the pattern, and a maqta is the closing couplet that often carries the poet's pen name, or takhallus."
+        },
+        {
+          "heading": "Major poets",
+          "text": "Mir Taqi Mir, Mirza Ghalib, Momin, Dard, Sauda, Daagh Dehlvi, Bahadur Shah Zafar, Allama Iqbal, Josh Malihabadi, Firaq Gorakhpuri, Jigar Moradabadi, Hasrat Mohani, Faiz Ahmed Faiz, Sahir Ludhianvi, Kaifi Azmi, Ahmad Nadeem Qasmi, Nida Fazli, Munir Niazi, Ahmad Faraz, Parveen Shakir, Iftikhar Arif and Jaun Elia are among the most widely read names."
+        },
+        {
+          "heading": "Themes",
+          "text": "Classical imagery centres on the beloved, the wine-bearer, the garden, the nightingale, the desert, separation and union, and the wound of longing. Many poems work simultaneously as romantic, mystical and philosophical statements, which is why the same sher can be read at several levels."
+        },
+        {
+          "heading": "Performance",
+          "text": "A mushaira is a gathering where poets recite ghazals and nazms and the audience responds between couplets with appreciation or requests for a repeat. Tarannum, a melodic recitation style, and the speed of audience response shape how a poem is written and revised."
+        },
+        {
+          "heading": "Reading and translation",
+          "text": "Urdu is written in a Perso-Arabic script, and much classical poetry draws on Persian vocabulary. Translation has to negotiate rhyme, refrain, metre and layered meaning at once; a literal translation often loses the radif, so good translations usually add a short note on the form."
+        }
+      ]
+    },
+    {
+      "id": "ghazal",
+      "title": "The ghazal",
+      "aliases": [
+        "ghazal",
+        "ghazals",
+        "sher",
+        "qafia",
+        "radif",
+        "matla",
+        "maqta",
+        "takhallus"
+      ],
+      "tags": [
+        "poetry",
+        "urdu",
+        "form",
+        "reference"
+      ],
+      "summary": "The ghazal is a poem of autonomous rhyming couplets, usually between five and fifteen, that share a metre, a rhyme and a refrain. Originating in Arabic and perfected in Persian and Urdu, it is the most recognised form of Urdu poetry and has also been adopted by poets writing in English.",
+      "sections": [
+        {
+          "heading": "Formal rules",
+          "text": "Every couplet, or sher, is a complete poem in itself. The first couplet, the matla, states the rhyme in both lines; in later couplets only the second line carries it. The qafia is the rhyming word immediately before the radif, and the radif is the repeated word or phrase that closes the line."
+        },
+        {
+          "heading": "Structure and naming",
+          "text": "The maqta is the final couplet, where the poet often includes a takhallus, a pen name. The bahr is the chosen quantitative metre. A ghazal that omits the radif is called ghair-muraddaf, while one with a refrain is muraddaf."
+        },
+        {
+          "heading": "How meaning works",
+          "text": "Because each sher stands alone, a ghazal advances by resonance rather than narrative. Traditional imagery of the beloved, the candle, the moth, the desert, the tavern and the garden can be read as romantic, mystical, social or philosophical, often at the same time."
+        },
+        {
+          "heading": "Masters",
+          "text": "Mir Taqi Mir is celebrated for the plain intensity of grief, Mirza Ghalib for metaphysical wit, Daagh for idiom and elegance, Firaq Gorakhpuri for classical craft, Faiz Ahmed Faiz for joining romantic diction to political hope, and Ahmad Faraz and Parveen Shakir for a modern, direct voice."
+        },
+        {
+          "heading": "The ghazal in English",
+          "text": "Poets such as Adrienne Rich, Agha Shahid Ali, Robert Bly and John Hollander have written English ghazals, often relaxing the quantitative metre while keeping the autonomous couplets, the refrain and the poet's signature in the closing sher."
+        }
+      ]
+    },
+    {
+      "id": "nazm-urdu-forms",
+      "title": "Nazm and other Urdu verse forms",
+      "aliases": [
+        "nazm",
+        "qasida",
+        "masnavi",
+        "marsia",
+        "rubai",
+        "urdu forms",
+        "doha"
+      ],
+      "tags": [
+        "poetry",
+        "urdu",
+        "forms",
+        "reference"
+      ],
+      "summary": "Beyond the ghazal, Urdu poetry uses several forms with distinct purposes: the nazm for sustained argument, the qasida for formal praise, the masnavi for narrative, the marsia for elegy, and the rubai and doha for compression.",
+      "sections": [
+        {
+          "heading": "Nazm",
+          "text": "A nazm is a continuous poem with a single subject and a developing structure, so its lines depend on one another rather than standing alone. It may use any metre and rhyme scheme, including free verse. Allama Iqbal, Faiz Ahmed Faiz, Josh Malihabadi and Nida Fazli used it for philosophical, political and lyrical arguments."
+        },
+        {
+          "heading": "Qasida and masnavi",
+          "text": "The qasida is a long formal poem, often panegyric, that moves through set thematic sections and maintains one rhyme throughout. The masnavi uses rhyming couplets with a changing rhyme, which makes it suitable for long narrative; classical examples include religious, romantic and historical stories."
+        },
+        {
+          "heading": "Marsia and rubai",
+          "text": "The marsia is an elegiac poem, historically associated with commemorating the tragedy of Karbala and developed to great length by Mir Anis and Mirza Dabeer. The rubai is a four-line stanza, usually with the first, second and fourth lines rhyming, that delivers a complete thought with epigrammatic force."
+        },
+        {
+          "heading": "Short forms",
+          "text": "The doha is a self-contained couplet used for moral or devotional statement, and the sher is the two-line unit from which a ghazal is built. A qata is a short fragment of two or four lines that does not form a full ghazal."
+        },
+        {
+          "heading": "Choosing a form",
+          "text": "Use a ghazal when each couplet should stand alone, a nazm when the argument must accumulate, a masnavi when telling a story, and a rubai when a single idea needs to land sharply. The choice of form is part of the meaning, not just the packaging."
+        }
+      ]
+    },
+    {
+      "id": "mirza-ghalib",
+      "title": "Mirza Ghalib",
+      "aliases": [
+        "ghalib",
+        "mirza ghalib",
+        "ghalib poetry",
+        "diwan e ghalib"
+      ],
+      "tags": [
+        "poetry",
+        "urdu",
+        "biography",
+        "literature"
+      ],
+      "summary": "Mirza Asadullah Khan Ghalib, known simply as Ghalib, was a nineteenth-century Urdu and Persian poet generally regarded as the greatest classical master of the Urdu ghazal. He lived through the decline of Mughal Delhi and the upheaval of 1857, and his work combines emotional intensity with philosophical wit.",
+      "sections": [
+        {
+          "heading": "Life",
+          "text": "Ghalib was born in Agra in 1797 and spent most of his adult life in Delhi. He outlived the Mughal court's patronage, struggled with pension disputes and debt, and recorded the upheaval of his age in letters and in Persian prose as well as in verse."
+        },
+        {
+          "heading": "Poetic character",
+          "text": "His ghazals are famous for difficulty, compressed paradox, metaphysical questioning and an ironic self-awareness. He treats love, loss, certainty, doubt, divine unity and the instability of the self with a voice that can be tender and sceptical within the same couplet."
+        },
+        {
+          "heading": "Works",
+          "text": "His Urdu Diwan is relatively small but extraordinarily influential. His Persian poetry, his collections of letters and his prose accounts of the rebellion are also studied, and his letters are admired for their colloquial, lively Urdu prose."
+        },
+        {
+          "heading": "Legacy",
+          "text": "Later poets from Iqbal and Faiz to Parveen Shakir and Jaun Elia have measured themselves against him. His couplets are quoted across South Asia in everyday conversation, in music, and in both scholarly and popular readings of the ghazal."
+        }
+      ]
+    },
+    {
+      "id": "allama-iqbal",
+      "title": "Allama Iqbal",
+      "aliases": [
+        "iqbal",
+        "allama iqbal",
+        "sir iqbal",
+        "muhammad iqbal",
+        "shikwa",
+        "bang e dara",
+        "khudi"
+      ],
+      "tags": [
+        "poetry",
+        "urdu",
+        "philosophy",
+        "biography"
+      ],
+      "summary": "Allama Iqbal was a poet, philosopher and barrister whose Urdu and Persian verse reshaped South Asian literary and intellectual life in the early twentieth century. He is best known for the concept of khudi, or selfhood, developed as a spiritual and ethical force rather than mere ego.",
+      "sections": [
+        {
+          "heading": "Life and work",
+          "text": "Born in Sialkot in 1877, he studied in Lahore and then in Cambridge, Munich and Heidelberg before returning to practise law and write. His collections include Bang-e-Dara, Bal-e-Jibril, Zarb-e-Kalim in Urdu and Asrar-e-Khudi and Javid Nama in Persian."
+        },
+        {
+          "heading": "Khudi",
+          "text": "Khudi names the cultivated, disciplined self that becomes capable of creative action and nearness to the divine. Iqbal contrasts it with self-negation and with passive imitation, and he presents love, action and restless striving as the forces that strengthen it."
+        },
+        {
+          "heading": "Poetic style",
+          "text": "He uses the classical ghazal and nazm with a new public, philosophical voice, drawing on Quranic and Persian imagery, European philosophy and the political concerns of his age. Well-known poems include Shikwa, Jawab-e-Shikwa, Tulu-e-Islam and the lyrics of Bal-e-Jibril."
+        },
+        {
+          "heading": "Reception",
+          "text": "His poetry is read both as literature and as a statement of Muslim intellectual revival, and it is widely quoted, sung and translated. Because his work crosses devotional, philosophical and political registers, a careful summary attributes interpretations to their readers rather than settling them."
+        }
+      ]
+    },
+    {
+      "id": "mir-taqi-mir",
+      "title": "Mir Taqi Mir and the classical Delhi school",
+      "aliases": [
+        "mir taqi mir",
+        "mir",
+        "sauda",
+        "dard",
+        "delhi school",
+        "rekhta poets"
+      ],
+      "tags": [
+        "poetry",
+        "urdu",
+        "biography",
+        "literature"
+      ],
+      "summary": "Mir Taqi Mir is often called the pioneer of the Urdu ghazal's emotional idiom. Writing in eighteenth-century Delhi alongside Sauda, Dard and Momin, he established a plain, inward, grief-saturated style that later poets treated as the benchmark of authenticity.",
+      "sections": [
+        {
+          "heading": "The Delhi school",
+          "text": "Wali Deccani's visit to Delhi helped establish Rekhta as a literary language there. Mir, Sauda and Dard developed distinct voices: Mir for inward sorrow and simplicity, Sauda for satire and rhetorical scale, and Dard for mystical restraint."
+        },
+        {
+          "heading": "Mir's language",
+          "text": "His diction is deliberately close to spoken Urdu, his metres are light, and his couplets often achieve force through understatement rather than ornament. He wrote about separation, decline, the self and the city with a directness that still reads as modern."
+        },
+        {
+          "heading": "Later classicists",
+          "text": "Momin is known for intricate, compressed craft, Daagh Dehlvi for polished idiom and for training a generation of pupils in Lucknow and Hyderabad, and Bahadur Shah Zafar for ghazals shaped by exile and loss."
+        },
+        {
+          "heading": "Influence",
+          "text": "Ghalib inherited and challenged this tradition; Firaq Gorakhpuri and later critics returned to Mir as a standard of natural expression. The Delhi school's preference for emotional truth over display remains a live critical idea in Urdu poetry."
+        }
+      ]
+    },
+    {
+      "id": "faiz-ahmed-faiz",
+      "title": "Faiz Ahmed Faiz",
+      "aliases": [
+        "faiz",
+        "faiz ahmed faiz",
+        "faiz poetry",
+        "progressive writers",
+        "naqsh e faryadi"
+      ],
+      "tags": [
+        "poetry",
+        "urdu",
+        "biography",
+        "literature"
+      ],
+      "summary": "Faiz Ahmed Faiz was a twentieth-century Urdu poet and journalist who joined the classical ghazal's romantic vocabulary to political commitment, labour movements and anti-colonial hope. He is one of the most translated Urdu poets.",
+      "sections": [
+        {
+          "heading": "Life",
+          "text": "Born in 1911 in Sialkot district, he taught literature, edited journals, served in the army during the Second World War and was imprisoned in the 1950s for his political associations. Periods of exile in Beirut and Moscow broadened the geographical range of his work."
+        },
+        {
+          "heading": "Poetic method",
+          "text": "Faiz keeps the radif, qafia and imagery of the classical ghazal but lets the beloved stand for a person, a homeland, a future or a collective hope at once. That ambiguity is why a single sher can be read as a love poem and as a political statement."
+        },
+        {
+          "heading": "Collections",
+          "text": "Naqsh-e-Faryadi, Dast-e-Saba, Zindan Nama and Dast-e-Tah-e-Sang are among his best-known collections. Poems such as the ones beginning with the imagery of the blood-stained dawn and the imprisoned night are widely recited at public gatherings."
+        },
+        {
+          "heading": "Legacy",
+          "text": "He was associated with the Progressive Writers' Movement, and his verse has been set to music by many singers. Translations into English, Russian and other languages helped make the Urdu ghazal legible to readers outside South Asia."
+        }
+      ]
+    },
+    {
+      "id": "modern-urdu-poets",
+      "title": "Modern Urdu poets",
+      "aliases": [
+        "ahmad faraz",
+        "parveen shakir",
+        "jaun elia",
+        "josh malihabadi",
+        "firaq",
+        "nida fazli",
+        "munir niazi",
+        "sahir ludhianvi",
+        "urdu poets list"
+      ],
+      "tags": [
+        "poetry",
+        "urdu",
+        "biography",
+        "literature"
+      ],
+      "summary": "Twentieth-century Urdu poetry widened the tradition beyond the classical courts: progressive politics, existential irony, feminism, partition memory and plain modern speech all entered the ghazal and the nazm.",
+      "sections": [
+        {
+          "heading": "Josh and Firaq",
+          "text": "Josh Malihabadi is known for the energy, scale and rhetorical force of his nazms, while Firaq Gorakhpuri combined deep classical learning with a supple, conversational ghazal and influential criticism."
+        },
+        {
+          "heading": "Progressives and film lyricists",
+          "text": "Sahir Ludhianvi, Kaifi Azmi, Ahmad Nadeem Qasmi and Majrooh Sultanpuri linked poetry to social criticism and to film song, which brought Urdu verse to a mass audience across South Asia."
+        },
+        {
+          "heading": "Faraz, Shakir and their generation",
+          "text": "Ahmad Faraz used direct, romantic and dissenting diction that made him a popular public voice. Parveen Shakir introduced a distinctly feminine first person, playful imagery and a modern idiom that changed how the ghazal could speak."
+        },
+        {
+          "heading": "Later voices",
+          "text": "Munir Niazi is remembered for haunting brevity, Nida Fazli for gentle philosophical lyricism, Jaun Elia for corrosive irony and candour, Iftikhar Arif for classical gravity, and Anwar Masood for humour and accessible narrative."
+        },
+        {
+          "heading": "Contemporary scene",
+          "text": "Mushairas, television, recordings and social media now circulate Urdu poetry widely, and younger poets mix the ghazal with free verse, performance and code-switching between Urdu, Hindi and English."
+        }
+      ]
+    },
+    {
+      "id": "mushaira",
+      "title": "Mushaira and Urdu literary culture",
+      "aliases": [
+        "mushaira",
+        "mushaaira",
+        "tarannum",
+        "takhallus",
+        "urdu literary culture",
+        "poetry gathering"
+      ],
+      "tags": [
+        "poetry",
+        "urdu",
+        "culture",
+        "performance"
+      ],
+      "summary": "A mushaira is a public gathering at which poets recite ghazals and nazms to a responsive audience. It is the principal performance institution of Urdu poetry and has shaped both how poems are written and how they are judged.",
+      "sections": [
+        {
+          "heading": "How it works",
+          "text": "Poets are seated in an order of seniority and recite in rounds. The audience responds after individual couplets with appreciation, or asks for a repeat, so a sher that survives repeated public testing gains a life of its own independent of the printed page."
+        },
+        {
+          "heading": "Recitation styles",
+          "text": "Tarannum is a melodic, measured recitation that can highlight the metre and the radif, while a plain reading emphasises argument and diction. Well-known poems are often recognised by the opening line, called the matla."
+        },
+        {
+          "heading": "Institutions",
+          "text": "The takhallus, or pen name, conventionally appears in the final couplet, and the ustad-shagird relationship links a younger poet to a master who corrects metre and diction. Literary journals, radio, television and now online recordings extend the same culture beyond the hall."
+        },
+        {
+          "heading": "Why it matters for reading",
+          "text": "Because a sher is designed to be heard once and understood immediately, compactness, sound and the placement of the refrain carry unusual weight. Reading a ghazal silently still benefits from imagining that audience."
+        }
+      ]
+    },
+    {
+      "id": "poetic-devices",
+      "title": "Poetic devices and scansion",
+      "aliases": [
+        "poetic devices",
+        "metaphor",
+        "iambic pentameter",
+        "enjambment",
+        "imagery",
+        "scansion",
+        "literary devices"
+      ],
+      "tags": [
+        "poetry",
+        "technique",
+        "reference",
+        "english"
+      ],
+      "summary": "Poetic devices are the repeatable techniques by which verse builds sound, emphasis and meaning. They include metre, rhyme, lineation, figurative language and patterns of repetition, and they work in both English and Urdu traditions even though the underlying prosodies differ.",
+      "sections": [
+        {
+          "heading": "Sound",
+          "text": "Rhyme, slant rhyme, assonance, consonance, alliteration and onomatopoeia organise the audible surface of a poem. In English, metre counts patterns of stress; in classical Urdu, aruz counts patterns of long and short syllables."
+        },
+        {
+          "heading": "Line and syntax",
+          "text": "Enjambment lets a sentence run past a line break, while an end-stopped line closes at the break. A caesura places a pause inside a line. Both let a poet set grammar against rhythm so that meaning arrives slightly before or after the ear expects it."
+        },
+        {
+          "heading": "Figurative language",
+          "text": "Metaphor, simile, metonymy, synecdoche, personification, symbol, allusion and irony compress comparison and argument. Imagery is not decoration: in most poems the pattern of images carries the claim that the literal statement only partially states."
+        },
+        {
+          "heading": "Scansion in practice",
+          "text": "To scan an English line, mark stressed and unstressed syllables, name the recurring foot, and count the feet per line. To analyse an Urdu sher, identify the bahr, locate the qafia and radif, and check that every couplet keeps all three."
+        },
+        {
+          "heading": "Structure and repetition",
+          "text": "Anaphora, refrain, parallelism, volta and stanza form create larger patterns across a poem. Repetition with variation is the most reliable way a poem builds pressure and then releases it."
+        }
+      ]
+    },
+    {
+      "id": "english-urdu-poetry-compared",
+      "title": "Comparing English and Urdu poetry",
+      "aliases": [
+        "comparison english urdu poetry",
+        "difference between ghazal and sonnet",
+        "english vs urdu poetry"
+      ],
+      "tags": [
+        "poetry",
+        "comparison",
+        "english",
+        "urdu"
+      ],
+      "summary": "English and Urdu poetry share metaphor, imagery, refrain and performance, but they differ sharply in prosody, in the unit of composition, and in the relationship between poem and audience.",
+      "sections": [
+        {
+          "heading": "Prosody",
+          "text": "English metre is stress-based, counting accented syllables and feet. Classical Urdu metre is quantitative, counting long and short syllables in fixed aruz patterns. Rhyme in English usually falls at line ends; in the ghazal it is tied to a mandatory refrain structure."
+        },
+        {
+          "heading": "Unit of composition",
+          "text": "An English lyric generally develops one continuous argument across stanzas. A ghazal is a sequence of autonomous couplets whose unity is tonal and formal rather than narrative, so a single sher can circulate independently for centuries."
+        },
+        {
+          "heading": "Audience",
+          "text": "The mushaira gives Urdu poetry an immediate, vocal public that responds couplet by couplet. English poetry historically circulated through print and the silent reader, though spoken word and slam have recently revived performance."
+        },
+        {
+          "heading": "Shared ground",
+          "text": "Both traditions use the beloved, the natural world, absence, time and mortality as central figures; both support mystical, political and ironic readings; and both were transformed by modern free verse and by translation."
+        },
+        {
+          "heading": "Translation",
+          "text": "A sonnet loses its rhyme but can keep its turn; a ghazal loses its radif and its metre, so translators usually keep the autonomy of the couplet and add a note about the form. Neither tradition translates cleanly into the other, which is itself a useful critical insight."
+        }
+      ]
+    },
+    {
+      "id": "atomic-bomb-history",
+      "title": "History of the atomic bomb",
+      "aliases": [
+        "history of the atomic bomb",
+        "atomic bomb",
+        "atomic bombs",
+        "nuclear weapon",
+        "nuclear weapons",
+        "manhattan project",
+        "hiroshima and nagasaki"
+      ],
+      "tags": [
+        "history",
+        "physics",
+        "war",
+        "technology"
+      ],
+      "summary": "The atomic bomb is a weapon that releases energy by nuclear fission of uranium-235 or plutonium-239. It was developed by the United States Manhattan Project during the Second World War, first tested in July 1945, and used against Hiroshima and Nagasaki in August 1945 - the only use of nuclear weapons in war.",
+      "sections": [
+        {
+          "heading": "How it works",
+          "text": "A fission bomb brings a sub-critical mass of fissile material rapidly into a super-critical configuration, either by firing one piece into another (a gun-type assembly, used for the uranium device) or by symmetrically compressing a plutonium core with conventional explosives (implosion). A chain reaction then splits nuclei and releases energy, neutrons and intense radiation within microseconds."
+        },
+        {
+          "heading": "The Manhattan Project",
+          "text": "Begun in 1942 under the US Army Corps of Engineers and directed by J. Robert Oppenheimer at Los Alamos, the project combined theoretical physics, industrial-scale uranium enrichment at Oak Ridge, plutonium production at Hanford and bomb design at Los Alamos. It employed more than 100,000 people and cost roughly two billion dollars in 1945 money."
+        },
+        {
+          "heading": "1945: test and use",
+          "text": "The first nuclear test, Trinity, took place on 16 July 1945 in New Mexico. On 6 August 1945 a uranium gun-type bomb was dropped on Hiroshima, and on 9 August a plutonium implosion bomb was dropped on Nagasaki. Japan announced its surrender on 15 August. Casualty estimates remain debated, but well over 100,000 people died in the two cities by the end of 1945, most of them civilians."
+        },
+        {
+          "heading": "Aftermath and the nuclear age",
+          "text": "The Soviet Union tested a bomb in 1949, ending the American monopoly, and the hydrogen bomb followed in the 1950s. The doctrine of mutually assured destruction shaped Cold War strategy, while the 1968 Treaty on the Non-Proliferation of Nuclear Weapons and later test-ban and arms-reduction agreements tried to limit spread and stockpiles."
+        },
+        {
+          "heading": "Why the history is contested",
+          "text": "Historians disagree about the weight to give to ending the war quickly, to the demonstration of power before the Soviet Union, and to the moral cost of targeting cities. The decision is one of the most studied problems in modern history, so a careful answer presents the arguments and the evidence rather than a single settled verdict."
+        },
+        {
+          "heading": "Common confusions",
+          "text": "An atomic (fission) bomb is not a hydrogen (thermonuclear fusion) bomb; the latter is far more powerful and uses a fission device as a trigger. A nuclear reactor is not a bomb: reactor fuel is not enriched to weapons grade and the geometry cannot produce a nuclear explosion. 'The Making of the Atomic Bomb' is a 1986 history book by Richard Rhodes, not the event itself."
+        }
+      ],
+      "example": "A useful exam framing: cause (wartime research and fear of a German bomb), mechanism (fission), event (Trinity, Hiroshima, Nagasaki), consequence (Cold War deterrence and non-proliferation), and evaluation (the unresolved moral debate).",
+      "code": ""
+    },
+    {
+      "id": "stopping-a-stuck-process",
+      "title": "Stopping a stuck process",
+      "aliases": [
+        "stuck process",
+        "kill a stuck process",
+        "kill process",
+        "terminate a process",
+        "kill a process",
+        "process will not stop",
+        "hung process",
+        "stuck python process",
+        "kill a stuck python process",
+        "python process",
+        "kill a python process"
+      ],
+      "tags": [
+        "computing",
+        "command line",
+        "troubleshooting"
+      ],
+      "summary": "To stop a stuck process, first send it a graceful termination signal, then escalate to a forced kill only if it ignores that signal. On Linux and macOS use kill with the process ID, on Windows use taskkill or Stop-Process, and never kill a process you cannot identify.",
+      "sections": [
+        {
+          "heading": "Find the process ID",
+          "text": "On Linux or macOS run ps aux | grep <name>, pgrep -fl <name>, or top / htop to find the PID. On Windows use Task Manager, tasklist, or Get-Process in PowerShell. Confirm the exact command line before acting, because similarly named processes may belong to the operating system."
+        },
+        {
+          "heading": "Ask it to stop first",
+          "text": "On Unix-like systems kill <PID> sends SIGTERM (signal 15), which lets the program save state, close files and shut down cleanly. Many applications also have a proper quit command or a service manager: sudo systemctl stop <service> is preferable to killing a managed daemon."
+        },
+        {
+          "heading": "Escalate only when needed",
+          "text": "If the process ignores SIGTERM, kill -9 <PID> sends SIGKILL, which the kernel enforces and the program cannot catch or clean up after. That can leave lock files, corrupted writes or orphaned child processes, so treat it as a last resort. On PowerShell use Stop-Process -Id <PID> -Force; in cmd use taskkill /PID <PID> /F."
+        },
+        {
+          "heading": "If it is a Python program",
+          "text": "A pure-Python loop can be interrupted with Ctrl+C in its terminal, which raises KeyboardInterrupt; handle that exception to shut down cleanly. A process blocked in a C extension or a system call may not respond until the call returns. For long-running jobs, build in a timeout, a cancellation flag or a signal handler."
+        },
+        {
+          "heading": "Prevention",
+          "text": "Wrap workers in supervising tools (systemd, supervisor, Docker restart policies, or a job queue with timeouts), log a heartbeat, and use process groups so children are terminated with their parent. A stuck process is usually a symptom of a missing timeout or an unbounded wait."
+        }
+      ],
+      "example": "pgrep -fl python; kill 12345; sleep 2; pgrep -fl python && kill -9 12345  # graceful first, forced only if still alive",
+      "code": "# Graceful shutdown inside a Python worker\nimport signal, sys\n\ndef stop(signum, frame):\n    print('shutting down cleanly')\n    sys.exit(0)\n\nsignal.signal(signal.SIGTERM, stop)\n"
+    },
+    {
+      "id": "capital-cities-explained",
+      "title": "Capital cities and why they are confusing",
+      "aliases": [
+        "capital city",
+        "capital cities",
+        "what is a capital",
+        "why is the capital not the largest city"
+      ],
+      "tags": [
+        "geography",
+        "reference"
+      ],
+      "summary": "A capital is the city that formally hosts a country's central government. It is often not the largest city: Australia has Canberra rather than Sydney, Canada has Ottawa rather than Toronto, and Turkey has Ankara rather than Istanbul.",
+      "sections": [
+        {
+          "heading": "Definition",
+          "text": "Capital status is a legal and political designation, not a measure of population or economic weight. Some countries name it in their constitution, others by ordinary law, and a few - such as South Africa - split the executive, legislative and judicial capitals between different cities."
+        },
+        {
+          "heading": "Why the largest city is usually not the capital",
+          "text": "Capitals are sometimes chosen deliberately to balance rival regions, to move government away from a dominant commercial centre, or to occupy a purpose-built planned city. Canberra, Brasília, Abuja, Islamabad and Naypyidaw are all examples of planned or relocated capitals."
+        },
+        {
+          "heading": "How to answer a capital question accurately",
+          "text": "Name the country's current official capital first. Then, if useful, mention any historical capital, the largest city, and any disputed status. Never answer with a paragraph about a different country simply because a search result happened to mention your country."
+        },
+        {
+          "heading": "Disputed and changing cases",
+          "text": "Jerusalem's status is disputed internationally, Bolivia has a constitutional capital and a separate seat of government, and Kazakhstan briefly renamed Astana to Nur-Sultan. A careful answer states the convention and the date rather than pretending there is no ambiguity."
+        }
+      ],
+      "example": "Japan -> Tokyo (not Kyoto, the imperial capital until 1868). France -> Paris. Pakistan -> Islamabad (not Karachi).",
+      "code": ""
+    }
+  ]
+}
