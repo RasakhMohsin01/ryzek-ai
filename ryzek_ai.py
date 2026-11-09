@@ -19,7 +19,7 @@ import os
 import sys
 import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 from urllib.parse import parse_qs, urlparse
 
 import ryzek_auth as auth
@@ -112,10 +112,6 @@ class Handler(BaseHTTPRequestHandler):
         path, qs = parsed.path, parse_qs(parsed.query)
 
         if path in ("/", "/index.html"):
-            # Cookie-free fallback: the login page sends the browser to
-            # "/?t=<token>" when cookies are blocked. We adopt the token, set
-            # the cookie for next time, and keep it in the URL so a reload
-            # still works. Without this, any client that drops cookies loops.
             url_token = (qs.get("t") or [""])[0]
             me = self._me()
             if me is None and url_token:
@@ -123,9 +119,6 @@ class Handler(BaseHTTPRequestHandler):
                 if me is not None:
                     self._cookies = [self._cookie(url_token)]
             if me is None:
-                # ?loop=1 means the browser already bounced once: show the form
-                # instead of redirecting again, so a bad cookie can never trap
-                # the user in a refresh loop.
                 if (qs.get("loop") or [""])[0] == "1":
                     self._send(200, LOGIN_HTML.replace("{{NAME}}", NAME)
                                .replace("{{VERSION}}", VERSION), "text/html; charset=utf-8",
@@ -258,7 +251,6 @@ class Handler(BaseHTTPRequestHandler):
         path = urlparse(self.path).path
         payload = self._body()
 
-        # ---- accounts -----------------------------------------------------
         if path == "/api/account/password":
             me = self._me()
             if me is None:
@@ -272,7 +264,6 @@ class Handler(BaseHTTPRequestHandler):
                                      "error": "Your current password is not correct."})
                     return
                 self.ryzek.auth.db.set_password(me["id"], new)
-                # changing the password signs out every old device, including this one
                 user, fresh = self.ryzek.auth.login(
                     me["username"], new, ip=self.client_address[0],
                     ua=self.headers.get("User-Agent", ""))
@@ -304,7 +295,6 @@ class Handler(BaseHTTPRequestHandler):
             device = str(payload.get("device") or "")[:64]
             ip = self.client_address[0]
             try:
-                # one account per person: same device, or too many from one IP
                 self.ryzek.guard.check(device, ip)
                 user, token = self.ryzek.auth.signup(
                     username, password, display, ip=ip,
@@ -463,7 +453,7 @@ class Handler(BaseHTTPRequestHandler):
                 self.ryzek.respond(message, session, depth=depth, online=online,
                                    opts=opts, user=me,
                                    emit=lambda ev: self._chunk(ev))
-            except Exception as exc:  # never leave a hung stream
+            except Exception as exc:
                 fallback_ctx = core.Context(session=session, opts=opts or {})
                 self._chunk({"type": "final", "reply": core.q.finalize_answer(
                              "## Something interrupted that answer\n\n" +
@@ -487,7 +477,6 @@ class Handler(BaseHTTPRequestHandler):
         })
 
     def do_HEAD(self) -> None:
-        # _send() already suppresses the body for HEAD requests.
         self.do_GET()
 
     def do_OPTIONS(self) -> None:
@@ -573,7 +562,7 @@ def selftest() -> None:
 def main() -> None:
     ap = argparse.ArgumentParser(description=f"{NAME} v{VERSION} - advanced Python AI agent")
     ap.add_argument("--cli", action="store_true", help="terminal chat instead of the browser")
-    ap.add_argument("--port", type=int, default=int(os.environ.get("PORT", "8000")))
+    ap.add_argument("--port", type=int, default=int(os.environ.get("PORT", 8000)))
     ap.add_argument("--selftest", action="store_true", help="offline sanity checks and exit")
     args = ap.parse_args()
     if args.selftest:
